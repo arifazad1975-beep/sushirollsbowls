@@ -947,35 +947,20 @@
   }
 
   function submitOrder() {
-    var name = document.getElementById('co_name').value.trim();
-    var phone = document.getElementById('co_phone').value.trim();
-    var address = document.getElementById('co_address').value.trim();
-    var notes = document.getElementById('co_notes').value.trim();
+    var name    = document.getElementById('co_name').value.trim();
+    var phone   = document.getElementById('co_phone').value.trim();
+    var address = document.getElementById('co_address') ? document.getElementById('co_address').value.trim() : '';
+    var notes   = document.getElementById('co_notes').value.trim();
 
     if (!name || !phone) { alert('Bitte Name und Telefon eingeben!'); return; }
     if (orderType === 'delivery' && !address) { alert('Bitte Lieferadresse eingeben!'); return; }
 
     var orderNum = Math.floor(Math.random() * 9000) + 1000;
-    var typeTxt = orderType === 'pickup' ? '🏪 PICKUP' : '🛵 DELIVERY';
-    var payTxt = {cash:'Bar',twint:'TWINT',card:'Karte',online:'Online'}[payMethod] || payMethod;
+    var typeTxt  = orderType === 'pickup' ? 'PICKUP' : 'DELIVERY';
+    var payTxt   = {cash:'Bar',twint:'TWINT',card:'Karte',online:'Online'}[payMethod] || payMethod;
 
-    // WhatsApp message
-    var msg = '🍣 *NEUE BESTELLUNG #' + orderNum + '*\n';
-    msg += '━━━━━━━━━━━━━━━━━\n';
-    msg += typeTxt + '\n\n';
-    msg += '👤 *Name:* ' + name + '\n';
-    msg += '📱 *Tel:* ' + phone + '\n';
-    if (orderType === 'delivery') msg += '📍 *Adresse:* ' + address + '\n';
-    if (notes) msg += '📝 *Notiz:* ' + notes + '\n';
-    msg += '\n*Bestellung:*\n';
-    cart.forEach(function(c) {
-      msg += c.qty + 'x ' + c.name + ' — CHF ' + (c.price*c.qty).toFixed(2) + '\n';
-    });
-    msg += '━━━━━━━━━━━━━━━━━\n';
-    msg += '💰 *Total: CHF ' + getTotal().toFixed(2) + '*\n';
-    msg += '💳 *Zahlung:* ' + payTxt;
-
-    window.open('https://wa.me/0041779527477?text=' + encodeURIComponent(msg), '_blank');
+    // Send to kitchen printer
+    sendToPrinter(orderNum, name, phone, address, notes, payTxt, typeTxt);
 
     closeCheckout();
     document.getElementById('successNum').textContent = 'Bestellung #' + orderNum + ' · CHF ' + getTotal().toFixed(2);
