@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sushi Rolls & Bowls Zürich – Frisches Sushi bestellen & liefern | Pflanzschulstrasse 15</title>
+  <meta name="description" content="Frisches Sushi in Zürich bestellen und liefern lassen. Sushi Rolls & Bowls bietet authentische japanische Küche: Maki, Bowls, Nigiri, Sashimi und mehr. Jetzt online bestellen!">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Sushi Rolls & Bowls Zürich – Frisches Sushi bestellen">
+  <meta property="og:type" content="restaurant">
+  <link rel="canonical" href="https://www.sushirollsbowls.ch">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --orange:#e8420a;--orange-light:#ff6b3d;
+      --dark:#111010;--white:#fefefe;--cream:#fdf8f3;
+      --gray:#6b6b6b;--border:#ede8e0;--card-bg:#fff;
+      --green:#27ae60;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden}
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:var(--cream)}
+    ::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(254,254,254,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:all 0.3s;}
+    .nav-logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none}
+    .nav-logo-text{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--dark);line-height:1.2}
+    .nav-logo-text span{color:var(--orange)}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;text-decoration:none;color:var(--dark);transition:color 0.2s;position:relative;padding-bottom:3px}
+    .nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transition:transform 0.25s;border-radius:1px}
+    .nav-links a:hover{color:var(--orange)}
+    .nav-links a:hover::after{transform:scaleX(1)}
+    .nav-right-group{display:flex;align-items:center;gap:0.8rem;}
+    .nav-order{background:var(--orange);color:var(--white);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;padding:0.65rem 1rem;border:none;cursor:pointer;white-space:nowrap;font-family:'Outfit',sans-serif;border-radius:2px;text-decoration:none;display:inline-block;transition:background 0.2s,transform 0.15s;}
+    .nav-order:hover{background:#c73508;transform:translateY(-1px)}
+
+    /* CART BUTTON IN NAV */
+    .nav-cart-btn{position:relative;background:var(--dark);color:var(--white);font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;padding:0.65rem 1rem;border:none;cursor:pointer;white-space:nowrap;font-family:'Outfit',sans-serif;border-radius:2px;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;}
+    .nav-cart-btn:hover{background:#333}
+    .cart-badge{background:var(--orange);color:white;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;display:none;align-items:center;justify-content:center;position:absolute;top:-6px;right:-6px;}
+    .cart-badge.show{display:flex;}
+
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+    .hamburger span{width:24px;height:2px;background:var(--dark);transition:all 0.3s;display:block}
+
+    /* FRESH BADGE STRIP */
+    .fresh-strip{background:var(--cream);border-bottom:1px solid var(--border);padding:10px 0;overflow:hidden;}
+    .fresh-strip-inner{display:flex;gap:3rem;align-items:center;animation:scroll-strip 25s linear infinite;white-space:nowrap;}
+    .fresh-item{display:flex;align-items:center;gap:0.6rem;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;color:var(--gray);flex-shrink:0;}
+    .fresh-item span{color:var(--orange);}
+    @keyframes scroll-strip{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ORDER TYPE BAR */
+    .order-type-bar{background:var(--white);border-bottom:2px solid var(--border);padding:0;display:flex;justify-content:center;}
+    .ot-tabs{display:flex;gap:0;max-width:400px;width:100%;}
+    .ot-tab{flex:1;padding:14px;background:transparent;border:none;font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:var(--gray);transition:all 0.2s;border-bottom:3px solid transparent;margin-bottom:-2px;}
+    .ot-tab.active{color:var(--orange);border-bottom-color:var(--orange);}
+    .ot-tab:hover{color:var(--orange);}
+
+    /* HERO */
+    #hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px;position:relative;overflow:hidden;}
+    .hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 3rem 5rem 4rem;position:relative;z-index:2;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:0.6rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:1.5rem;}
+    .hero-eyebrow::before{content:'';width:30px;height:2px;background:var(--orange);border-radius:1px}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,4.5vw,5rem);font-weight:700;line-height:1.05;margin-bottom:1.5rem;}
+    h1 em{font-style:italic;color:var(--orange)}
+    .hero-desc{font-size:1rem;line-height:1.85;color:var(--gray);max-width:420px;margin-bottom:2.5rem;font-weight:300;}
+    .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+    .btn-primary{padding:0.9rem 2rem;background:var(--orange);color:var(--white);font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;font-family:'Outfit',sans-serif;border-radius:2px;text-decoration:none;display:inline-block;transition:background 0.2s,transform 0.15s;}
+    .btn-primary:hover{background:#c73508;transform:translateY(-2px)}
+    .btn-ghost{padding:0.9rem 2rem;background:transparent;color:var(--dark);font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;border:1.5px solid transparent;cursor:pointer;font-family:'Outfit',sans-serif;border-radius:2px;text-decoration:none;display:inline-block;transition:border-color 0.2s,color 0.2s;}
+    .btn-ghost:hover{border-color:var(--orange);color:var(--orange)}
+    .hero-badges{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;}
+    .hero-badge-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--orange)}
+    .hero-badge-label{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray);margin-top:0.1rem}
+    .hero-right{position:relative;overflow:hidden;background:linear-gradient(135deg,#1a0a00 0%,#2d1200 50%,#1a0a00 100%);}
+    .hero-img-overlay{position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><circle cx="30" cy="30" r="1" fill="%23e8420a" opacity="0.15"/></svg>') repeat;}
+
+    /* MENU */
+    #menu{padding:4rem 3rem;background:var(--cream)}
+    .menu-header{text-align:center;margin-bottom:3rem}
+    .menu-cats{display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem;}
+    .menu-cat{padding:0.55rem 1.2rem;border:1.5px solid transparent;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;cursor:pointer;background:var(--white);font-family:'Outfit',sans-serif;border-radius:50px;transition:all 0.2s;color:var(--gray);}
+    .menu-cat.active,.menu-cat:hover{background:var(--orange);color:var(--white);border-color:var(--orange);}
+    .menu-section{margin-top:3rem;display:none}
+    .menu-section.visible{display:block}
+    .menu-section-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:0.5rem;display:flex;align-items:center;gap:1rem;}
+    .menu-section-sub{font-size:0.82rem;color:var(--gray);margin-bottom:1.5rem;font-style:italic}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+
+    /* MENU CARD — with ADD button */
+    .menu-card{background:var(--card-bg);border-radius:4px;padding:1.2rem;transition:transform 0.25s,box-shadow 0.25s;border:1px solid transparent;}
+    .menu-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.08);border-color:var(--border);}
+    .menu-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:0.4rem}
+    .menu-card-name{font-weight:600;font-size:0.95rem;line-height:1.3}
+    .menu-card-price{font-weight:700;color:var(--orange);white-space:nowrap;font-size:0.9rem;flex-shrink:0;}
+    .menu-card-desc{font-size:0.8rem;color:var(--gray);line-height:1.65}
+    .menu-badge{display:inline-flex;align-items:center;gap:0.3rem;font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;padding:0.2rem 0.5rem;border-radius:50px;margin-top:0.5rem;}
+    .badge-spicy{background:#fff0ee;color:#c0392b}
+    .badge-vegan{background:#f0fff4;color:#27ae60}
+    .badge-veggie{background:#f5fff0;color:#2ecc71}
+    .badge-unavail{background:#f5f5f5;color:#aaa}
+    .menu-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px;}
+    .add-to-cart-btn{background:var(--orange);color:white;border:none;border-radius:50%;width:30px;height:30px;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;}
+    .add-to-cart-btn:hover{background:#c73508;transform:scale(1.1);}
+    .item-qty-ctrl{display:flex;align-items:center;gap:6px;}
+    .qty-btn{width:26px;height:26px;background:var(--cream);border:1px solid var(--border);border-radius:4px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+    .qty-btn:hover{background:var(--orange);color:white;border-color:var(--orange);}
+    .qty-num{font-size:13px;font-weight:700;min-width:16px;text-align:center;}
+
+    /* CART SIDEBAR */
+    .cart-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1999;}
+    .cart-overlay.show{display:block;}
+    .cart-sidebar{position:fixed;top:0;right:-420px;width:420px;max-width:100vw;height:100vh;background:white;border-left:1px solid var(--border);z-index:2000;transition:right 0.3s;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,0.1);}
+    .cart-sidebar.open{right:0;}
+    .cart-header{padding:20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+    .cart-header h3{font-family:'Playfair Display',serif;font-size:1.3rem;}
+    .cart-close{background:transparent;border:none;color:var(--gray);font-size:1.4rem;cursor:pointer;padding:4px;}
+    .cart-items{flex:1;overflow-y:auto;padding:16px;}
+    .cart-empty{text-align:center;padding:40px 20px;color:var(--gray);}
+    .cart-item{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--border);align-items:center;}
+    .cart-item-info{flex:1;}
+    .cart-item-name{font-size:13px;font-weight:600;margin-bottom:2px;}
+    .cart-item-price{font-size:13px;color:var(--orange);font-weight:600;}
+    .cart-item-qty{display:flex;align-items:center;gap:6px;}
+    .cqty-btn{width:24px;height:24px;background:var(--cream);border:1px solid var(--border);border-radius:3px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+    .cqty-btn:hover{background:var(--orange);color:white;}
+    .cqty-num{font-size:13px;font-weight:700;min-width:20px;text-align:center;}
+    .cart-footer{padding:20px;border-top:1px solid var(--border);}
+    .cart-total-row{display:flex;justify-content:space-between;font-size:18px;font-weight:700;margin-bottom:16px;}
+    .cart-total-row span:last-child{color:var(--orange);}
+
+    /* ORDER TYPE IN CART */
+    .cart-order-type{display:flex;gap:0;margin-bottom:14px;border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+    .cot-btn{flex:1;padding:10px;background:transparent;border:none;font-family:'Outfit',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;color:var(--gray);transition:all 0.2s;}
+    .cot-btn.active{background:var(--orange);color:white;}
+    .checkout-btn{width:100%;padding:16px;background:var(--orange);border:none;color:white;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s;}
+    .checkout-btn:hover{background:#c73508;}
+
+    /* CHECKOUT MODAL */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:3000;align-items:center;justify-content:center;padding:20px;}
+    .modal-overlay.show{display:flex;}
+    .modal{background:white;border-radius:6px;width:100%;max-width:460px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.2);}
+    .modal-header{padding:20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+    .modal-header h3{font-family:'Playfair Display',serif;font-size:1.2rem;}
+    .modal-close{background:transparent;border:none;color:var(--gray);font-size:1.4rem;cursor:pointer;}
+    .modal-body{padding:20px;}
+    .mf{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+    .mf label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--orange);font-weight:600;}
+    .mf input,.mf select,.mf textarea{padding:12px;background:var(--cream);border:1px solid var(--border);border-radius:3px;color:var(--dark);font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;}
+    .mf input:focus,.mf select:focus{border-color:var(--orange);}
+    .mf input::placeholder{color:var(--gray);}
+    .order-summary-box{background:var(--cream);border:1px solid var(--border);border-radius:4px;padding:14px;margin-bottom:16px;}
+    .os-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:10px;}
+    .os-item{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;}
+    .os-total{display:flex;justify-content:space-between;font-size:15px;font-weight:700;border-top:1px solid var(--border);padding-top:10px;margin-top:8px;}
+    .os-total span:last-child{color:var(--orange);}
+    .pay-methods{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;}
+    .pay-m{padding:10px;background:var(--cream);border:1.5px solid var(--border);border-radius:3px;text-align:center;cursor:pointer;transition:all 0.2s;}
+    .pay-m.active{border-color:var(--orange);background:#fff8f5;}
+    .pay-m-icon{font-size:1.4rem;display:block;margin-bottom:4px;}
+    .pay-m-name{font-size:10px;letter-spacing:1px;color:var(--gray);font-weight:600;}
+    .submit-order-btn{width:100%;padding:16px;background:var(--orange);border:none;color:white;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s;}
+    .submit-order-btn:hover{background:#c73508;}
+
+    /* SUCCESS */
+    .success-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:4000;align-items:center;justify-content:center;}
+    .success-overlay.show{display:flex;}
+    .success-box{background:white;border-radius:8px;padding:40px;text-align:center;max-width:400px;width:90%;border-top:4px solid var(--green);}
+    .success-icon{font-size:3.5rem;margin-bottom:16px;}
+    .success-box h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--green);margin-bottom:10px;}
+    .success-box p{color:var(--gray);font-size:14px;line-height:1.7;margin-bottom:20px;}
+    .success-num{background:var(--cream);border:1px solid var(--border);border-radius:4px;padding:10px;margin-bottom:16px;font-size:13px;font-weight:700;color:var(--orange);}
+    .success-close{padding:12px 28px;background:var(--orange);border:none;color:white;font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;}
+
+    /* STICKY CART */
+    .sticky-cart{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(254,254,254,0.98);border-top:1px solid var(--border);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;transform:translateY(100%);transition:transform 0.3s;box-shadow:0 -4px 20px rgba(0,0,0,0.08);padding-bottom:calc(12px + env(safe-area-inset-bottom));}
+    .sticky-cart.visible{transform:translateY(0);}
+    .sticky-info{font-size:13px;color:var(--dark);}
+    .sticky-info strong{color:var(--orange);}
+    .sticky-btn{background:var(--orange);border:none;color:white;padding:12px 24px;border-radius:2px;font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;}
+
+
+    /* MENU CARD PHOTO */
+    .menu-card-img{width:100%;height:160px;object-fit:cover;border-radius:4px;margin-bottom:10px;display:block;background:var(--cream);}
+    .menu-card-img-wrap{width:100%;height:160px;border-radius:4px;margin-bottom:10px;overflow:hidden;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:3rem;}
+
+    /* CONTACT */
+    #contact{display:grid;grid-template-columns:1fr 1fr;min-height:55vh}
+    .contact-left{background:var(--dark);color:var(--white);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+    .contact-left .section-tag{color:#f4a574}
+    .contact-left .section-tag::before{background:#f4a574}
+    .contact-left h2{color:var(--white)}
+    .contact-left h2 em{color:var(--orange)}
+    .section-tag{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:0.6rem;}
+    .section-tag::before{content:'';width:24px;height:2px;background:var(--orange);border-radius:1px}
+    h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;line-height:1.15;margin-bottom:1.5rem;}
+    h2 em{font-style:italic;color:var(--orange)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem}
+    .contact-block label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:#f4a574;display:block;margin-bottom:0.4rem;font-weight:600;}
+    .contact-block p,.contact-block a{font-size:0.92rem;color:#ccc;text-decoration:none;line-height:1.7;}
+    .contact-block a:hover{color:var(--orange)}
+    .hours-list{display:flex;flex-direction:column;gap:0.3rem}
+    .hours-row{display:flex;justify-content:space-between;font-size:0.85rem;color:#aaa;gap:1rem}
+    .hours-row span:first-child{color:#ccc}
+    .contact-right{background:#1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:3rem}
+    .map-wrap{width:100%;height:100%;min-height:400px;position:relative}
+    .map-wrap iframe{width:100%;height:100%;border:0;filter:grayscale(20%)}
+
+    footer{background:var(--dark);border-top:1px solid #1e1e1e;padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .footer-logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none}
+    .footer-logo span{font-family:'Playfair Display',serif;font-size:0.95rem;color:#777}
+    .footer-logo span em{font-style:normal;color:var(--orange)}
+    footer p{font-size:0.72rem;color:#444;letter-spacing:0.04em}
+    .footer-links{display:flex;gap:1.5rem}
+    .footer-links a{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:#444;text-decoration:none;transition:color 0.2s}
+    .footer-links a:hover{color:var(--orange)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+    .fade-up{animation:fadeUp 0.75s ease forwards}
+    .d1{animation-delay:0.1s;opacity:0}.d2{animation-delay:0.25s;opacity:0}.d3{animation-delay:0.4s;opacity:0}.d4{animation-delay:0.55s;opacity:0}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+    .reveal.in{opacity:1;transform:translateY(0)}
+
+    /* MOBILE */
+    @media(max-width:960px){
+      nav{padding:1rem 1.2rem;}
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+      .mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);flex-direction:column;padding:1.5rem;gap:1rem;z-index:199;}
+      .mobile-menu.open{display:flex;}
+      .mobile-menu a{font-size:0.9rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;color:var(--dark);font-weight:500;padding:0.5rem 0;border-bottom:1px solid var(--border);}
+      #hero{grid-template-columns:1fr;min-height:auto;}
+      .hero-left{padding:2.5rem 1.2rem;}
+      .hero-right{min-height:55vw;}
+      h1{font-size:2.2rem;}
+      .hero-badges{gap:1.5rem;}
+      #menu{padding:3rem 1.2rem;}
+      .menu-cats{justify-content:flex-start;}
+      #contact{grid-template-columns:1fr;}
+      .contact-left{padding:3rem 1.5rem;}
+      .contact-grid{grid-template-columns:1fr;}
+      footer{flex-direction:column;text-align:center;padding:1.5rem;}
+      .nav-cart-btn span:not(.cart-badge){display:none;}
+      .nav-order{display:none;}
+      .order-type-bar{position:sticky;top:62px;z-index:150;}
+    }
+    @media(max-width:480px){
+      .menu-grid{grid-template-columns:1fr;}
+      h1{font-size:1.9rem;}
+      .hero-badges{flex-wrap:wrap;gap:1rem;}
+      .pay-methods{grid-template-columns:1fr 1fr;}
+      .cart-sidebar{width:100vw;}
+      .modal{max-width:100%;margin:10px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">
+    <span style="font-size:1.5rem;">🍣</span>
+    <div class="nav-logo-text">Sushi Rolls <span>&</span> Bowls</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Über uns</a></li>
+    <li><a href="#menu">Menü</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+  </ul>
+  <div class="nav-right-group">
+    <a href="tel:+41432349159" class="nav-order">043 234 91 59</a>
+    <button class="nav-cart-btn" onclick="toggleCart()">
+      🛒 <span>Warenkorb</span>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="toggleMenu()">Über uns</a>
+  <a href="#menu" onclick="toggleMenu()">Menü</a>
+  <a href="#contact" onclick="toggleMenu()">Kontakt</a>
+  <a href="tel:+41779527477" style="color:var(--orange)">+41 77 952 74 77</a>
+  <a href="#menu" onclick="toggleCart();toggleMenu();" style="color:var(--dark);font-weight:700;">🛒 Warenkorb</a>
+</div>
+
+<!-- FRESH BADGE STRIP -->
+<div class="fresh-strip" style="margin-top:62px;">
+  <div class="fresh-strip-inner">
+    <div class="fresh-item"><span>✅</span> Täglich frisch</div>
+    <div class="fresh-item"><span>🚀</span> Pickup & Delivery</div>
+    <div class="fresh-item"><span>🍣</span> Authentisches Sushi</div>
+    <div class="fresh-item"><span>🇨🇭</span> Zürich 8004</div>
+    <div class="fresh-item"><span>⏰</span> Mo-Do 11-22 · Fr 11-23 · Sa-So 13-23</div>
+    <div class="fresh-item"><span>✅</span> Täglich frisch</div>
+    <div class="fresh-item"><span>🚀</span> Pickup & Delivery</div>
+    <div class="fresh-item"><span>🍣</span> Authentisches Sushi</div>
+    <div class="fresh-item"><span>🇨🇭</span> Zürich 8004</div>
+    <div class="fresh-item"><span>⏰</span> Mo-Do 11-22 · Fr 11-23 · Sa-So 13-23</div>
+  </div>
+</div>
+
+<!-- ORDER TYPE BAR -->
+<div class="order-type-bar">
+  <div class="ot-tabs">
+    <button class="ot-tab active" id="ot_pickup" onclick="setOrderType('pickup',this)">🏪 Pickup</button>
+    <button class="ot-tab" id="ot_delivery" onclick="setOrderType('delivery',this)">🛵 Delivery</button>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-header reveal">
+    <p class="section-tag" style="justify-content:center">Unsere Spezialitäten</p>
+    <h2>Unser <em>Menü</em></h2>
+    <div class="menu-cats">
+      <button class="menu-cat active" onclick="showCat('starters',this)">Vorspeise</button>
+      <button class="menu-cat" onclick="showCat('soups',this)">Suppe</button>
+      <button class="menu-cat" onclick="showCat('bowls',this)">Bowls</button>
+      <button class="menu-cat" onclick="showCat('smartbowls',this)">Smart Bowls</button>
+      <button class="menu-cat" onclick="showCat('crunchyrolls',this)">Crunchy Rolls</button>
+      <button class="menu-cat" onclick="showCat('insideout',this)">Inside Out Rolls</button>
+      <button class="menu-cat" onclick="showCat('smartrolls',this)">Smart Rolls</button>
+      <button class="menu-cat" onclick="showCat('makis',this)">Makis</button>
+      <button class="menu-cat" onclick="showCat('momos',this)">Momos & Gyozas</button>
+      <button class="menu-cat" onclick="showCat('nigiri',this)">Nigiri</button>
+      <button class="menu-cat" onclick="showCat('sashimi',this)">Sashimi</button>
+      <button class="menu-cat" onclick="showCat('boxes',this)">Sushi Boxe</button>
+      <button class="menu-cat" onclick="showCat('sides',this)">Beilade & Sauce</button>
+      <button class="menu-cat" onclick="showCat('desserts',this)">Desserts</button>
+      <button class="menu-cat" onclick="showCat('drinks',this)">Getränk</button>
+    </div>
+  </div>
+
+  <!-- VORSPEISE -->
+  <div class="menu-section visible" id="cat-starters">
+    <div class="menu-section-title">Vorspeise</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-coleslaw-salat">
+        <img class="menu-card-img" 
+             src="images/coleslaw-salat.jpg" 
+             alt="Coleslaw Salat"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Coleslaw Salat</span><span class="menu-card-price">CHF 6.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Coleslaw Salat',6.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-edamame"><img class="menu-card-img" src="images/edamame.jpg" alt="Edamame" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Edamame</span><span class="menu-card-price">CHF 6.90</span></div><p class="menu-card-desc">Sojabohne mit Salz</p><span class="menu-badge badge-vegan">🌱 Vegan</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Edamame',6.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-kim-chi"><img class="menu-card-img" src="images/kim-chi.jpg" alt="Kim Chi" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Kim Chi</span><span class="menu-card-price">CHF 7.90</span></div><p class="menu-card-desc">Scharf-säuerlich</p><span class="menu-badge badge-spicy">🌶 Scharf</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Kim Chi',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-wakame"><img class="menu-card-img" src="images/wakame.jpg" alt="Wakame" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Wakame</span><span class="menu-card-price">CHF 7.90</span></div><p class="menu-card-desc">Algensalat mit Sesam</p><span class="menu-badge badge-vegan">🌱 Vegan</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Wakame',7.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- SUPPE -->
+  <div class="menu-section" id="cat-soups">
+    <div class="menu-section-title">Suppe</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-lachs-ramen-nudel-suppe">
+        <img class="menu-card-img" 
+             src="images/lachs-ramen-nudel-suppe.jpg" 
+             alt="Lachs Ramen Nudel Suppe"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Lachs Ramen Nudel Suppe</span><span class="menu-card-price">CHF 14.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Lachs Ramen Nudel Suppe',14.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-miso-lachs-suppe"><img class="menu-card-img" src="images/miso-lachs-suppe.jpg" alt="Miso Lachs Suppe" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Miso Lachs Suppe</span><span class="menu-card-price">CHF 9.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Miso Lachs Suppe',9.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-miso-suppe"><img class="menu-card-img" src="images/miso-suppe.jpg" alt="Miso Suppe" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Miso Suppe</span><span class="menu-card-price">CHF 7.90</span></div><span class="menu-badge badge-vegan">🌱 Vegan</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Miso Suppe',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-vegetarische-tofu-ramen-suppe"><img class="menu-card-img" src="images/vegetarische-tofu-ramen-suppe.jpg" alt="Vegetarische Tofu Ramen Suppe" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Vegetarische Tofu Ramen Suppe</span><span class="menu-card-price">CHF 13.90</span></div><span class="menu-badge badge-veggie">🥦 Vegetarisch</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Vegetarische Tofu Ramen Suppe',13.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- BOWLS -->
+  <div class="menu-section" id="cat-bowls">
+    <div class="menu-section-title">Bowls</div>
+    <p class="menu-section-sub">Alle Bowls werden mit frischem Sushi-Reis zubereitet</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-crispy-haehnchen-bowl">
+        <img class="menu-card-img" 
+             src="images/crispy-haehnchen-bowl.jpg" 
+             alt="Crispy Hähnchen Bowl"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Crispy Hähnchen Bowl</span><span class="menu-card-price">CHF 22.90</span></div><p class="menu-card-desc">Knusprige Hähnchenstücke, Avocado, Ananas, Peperoni, Edamame, Erdnüsse, Spicy Mayo, Teriyaki-Sauce</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Crispy Hähnchen Bowl',22.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-falafel-bowl"><img class="menu-card-img" src="images/falafel-bowl.jpg" alt="Falafel Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Falafel Bowl</span><span class="menu-card-price">CHF 22.90</span></div><p class="menu-card-desc">Falafel, Edamame, Gurke, Avocado, Radieschen, Spicy Mayo, Teriyaki-Sauce</p><span class="menu-badge badge-vegan">🌱 Vegan</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Falafel Bowl',22.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-hot-salmon-bowl"><img class="menu-card-img" src="images/hot-salmon-bowl.jpg" alt="Hot Salmon Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Hot Salmon Bowl</span><span class="menu-card-price">CHF 22.90</span></div><p class="menu-card-desc">Kimchi-Salat, Frühlingszwiebeln, Edamame, Mango, Lachs-Paste, Japan. Mayo, Wasabi</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Hot Salmon Bowl',22.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-sake-bowl"><img class="menu-card-img" src="images/sake-bowl.jpg" alt="Sake Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Sake Bowl</span><span class="menu-card-price">CHF 22.90</span></div><p class="menu-card-desc">Lachs, Avocado, Edamame, Mango, Gurke, Wasabi-Dip, Sojasauce</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Sake Bowl',22.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-spicy-salmon-bowl"><img class="menu-card-img" src="images/spicy-salmon-bowl.jpg" alt="Spicy Salmon Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Spicy Salmon Bowl</span><span class="menu-card-price">CHF 22.90</span></div><p class="menu-card-desc">Spicy Lachs, Kimchi-Salat, Frühlingszwiebeln, Edamame, Mango, Radieschen</p><span class="menu-badge badge-spicy">🌶 Scharf</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Spicy Salmon Bowl',22.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-spicy-tuna-bowl"><img class="menu-card-img" src="images/spicy-tuna-bowl.jpg" alt="Spicy Tuna Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Spicy Tuna Bowl</span><span class="menu-card-price">CHF 27.90</span></div><p class="menu-card-desc">Spicy Thunfisch, Kimchi-Salat, Frühlingszwiebeln, Edamame, Mango, Radieschen</p><span class="menu-badge badge-spicy">🌶 Scharf</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Spicy Tuna Bowl',27.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-suri-mayo-bowl"><img class="menu-card-img" src="images/suri-mayo-bowl.jpg" alt="Suri Mayo Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Suri Mayo Bowl</span><span class="menu-card-price">CHF 21.90</span></div><p class="menu-card-desc">Edamame, Mango, Gurke, Radieschen, Suri-Mayo-Paste, Japan. Mayo</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Suri Mayo Bowl',21.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-teriyaki-lachs-steak-bowl"><img class="menu-card-img" src="images/teriyaki-lachs-steak-bowl.jpg" alt="Teriyaki Lachs Steak Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Teriyaki Lachs Steak Bowl</span><span class="menu-card-price">CHF 29.90</span></div><p class="menu-card-desc">Teriyaki-Lachssteak, Radieschen, Wakame-Salat, Frühlingszwiebeln, Edamame, Mango</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Teriyaki Lachs Steak Bowl',29.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tuna-bowl"><img class="menu-card-img" src="images/tuna-bowl.jpg" alt="Tuna Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tuna Bowl</span><span class="menu-card-price">CHF 23.90</span></div><p class="menu-card-desc">Frühlingszwiebeln, Avocado, Mango, Radieschen, Edamame, Thunfisch-Mayo-Paste</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tuna Bowl',23.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-veggie-tofu-bowl"><img class="menu-card-img" src="images/veggie-tofu-bowl.jpg" alt="Veggie Tofu Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Veggie Tofu Bowl</span><span class="menu-card-price">CHF 22.90</span></div><p class="menu-card-desc">Gebratene Tofuwürfel, Gurke, Avocado, Edamame, Radieschen, Wakame-Salat</p><span class="menu-badge badge-vegan">🌱 Vegan</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Veggie Tofu Bowl',22.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-duck-bowl"><img class="menu-card-img" src="images/duck-bowl.jpg" alt="Duck Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Duck Bowl</span><span class="menu-card-price">CHF 29.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Duck Bowl',29.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- SMART BOWLS -->
+  <div class="menu-section" id="cat-smartbowls">
+    <div class="menu-section-title">Smart Bowls</div>
+    <p class="menu-section-sub">Kleineres Format – grosser Geschmack</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-shake-smart-bowl">
+        <img class="menu-card-img" 
+             src="images/shake-smart-bowl.jpg" 
+             alt="Shake Smart Bowl"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Shake Smart Bowl</span><span class="menu-card-price">CHF 16.90</span></div><p class="menu-card-desc">Frischer Lachs, Avocado, Gurke, Meeresalz, Sushi-Reis</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Shake Smart Bowl',16.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-smart-crispy-mozzarella-bowl"><img class="menu-card-img" src="images/smart-crispy-mozzarella-bowl.jpg" alt="Smart Crispy Mozzarella Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Smart Crispy Mozzarella Bowl</span><span class="menu-card-price">CHF 14.90</span></div><p class="menu-card-desc">Mozzarella-Sticks, Avocado, Gurke, Tofu, Sushi-Reis</p><span class="menu-badge badge-veggie">🥦 Vegetarisch</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Smart Crispy Mozzarella Bowl',14.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-smart-chicken-nugget-bowl"><img class="menu-card-img" src="images/smart-chicken-nugget-bowl.jpg" alt="Smart Chicken Nugget Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Smart Chicken Nugget Bowl</span><span class="menu-card-price">CHF 15.90</span></div><p class="menu-card-desc">6 Chicken Nuggets, Avocado, Gurke, Edamame, Sushi-Reis</p><span class="menu-badge badge-spicy">🌶 Scharf</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Smart Chicken Nugget Bowl',15.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-smart-tofu-falafel-bowl"><img class="menu-card-img" src="images/smart-tofu-falafel-bowl.jpg" alt="Smart Tofu & Falafel Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Smart Tofu & Falafel Bowl</span><span class="menu-card-price">CHF 15.90</span></div><p class="menu-card-desc">Falafel, Tofu, Avocado, Edamame, Mango, Teriyaki-Sauce</p><span class="menu-badge badge-vegan">🌱 Vegan</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Smart Tofu & Falafel Bowl',15.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-smart-crispy-fish-finger-bowl"><img class="menu-card-img" src="images/smart-crispy-fish-finger-bowl.jpg" alt="Smart Crispy Fish Finger Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Smart Crispy Fish Finger Bowl</span><span class="menu-card-price">CHF 15.90</span></div><p class="menu-card-desc">Knusprige Fischstäbli, Avocado, Edamame, Gurke, Sushi-Reis</p><span class="menu-badge badge-spicy">🌶 Scharf</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Smart Crispy Fish Finger Bowl',15.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-spicy-tuna-tataki-bowl"><img class="menu-card-img" src="images/spicy-tuna-tataki-bowl.jpg" alt="Spicy Tuna Tataki Bowl" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Spicy Tuna Tataki Bowl</span><span class="menu-card-price">CHF 16.90</span></div><p class="menu-card-desc">Spicy Thunfisch, Avocado, Edamame, Mango, Sushi-Reis</p><span class="menu-badge badge-spicy">🌶 Scharf</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Spicy Tuna Tataki Bowl',16.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- CRUNCHY ROLLS -->
+  <div class="menu-section" id="cat-crunchyrolls">
+    <div class="menu-section-title">Crunchy Rolls</div>
+    <p class="menu-section-sub">Alli Crunchy Rolls werde mit 8 Stück serviert</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-avo-cheese-crunchy-roll">
+        <img class="menu-card-img" 
+             src="images/avo-cheese-crunchy-roll.jpg" 
+             alt="Avo Cheese Crunchy Roll"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Avo Cheese Crunchy Roll</span><span class="menu-card-price">CHF 16.90</span></div><p class="menu-card-desc">Avocado, Frischkäse, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Avo Cheese Crunchy Roll',16.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-california-crunchy-roll"><img class="menu-card-img" src="images/california-crunchy-roll.jpg" alt="California Crunchy Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">California Crunchy Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Avocado, Krebsfleisch, Gurke, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('California Crunchy Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-ebi-tempura-crunchy-roll"><img class="menu-card-img" src="images/ebi-tempura-crunchy-roll.jpg" alt="Ebi Tempura Crunchy Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Ebi Tempura Crunchy Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Tempura-Garnelen, Avocado, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Ebi Tempura Crunchy Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-fitness-crunchy-roll"><img class="menu-card-img" src="images/fitness-crunchy-roll.jpg" alt="Fitness Crunchy Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Fitness Crunchy Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Lachs, Avocado, Frischkäse, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Fitness Crunchy Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-fitness-tuna-crunchy-roll"><img class="menu-card-img" src="images/fitness-tuna-crunchy-roll.jpg" alt="Fitness Tuna Crunchy Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Fitness Tuna Crunchy Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Thunfisch, Avocado, Frischkäse, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Fitness Tuna Crunchy Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-salmon-rocket-crunchy-roll"><img class="menu-card-img" src="images/salmon-rocket-crunchy-roll.jpg" alt="Salmon Rocket Crunchy Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Salmon Rocket Crunchy Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Rucola, Lachs, Frischkäse, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Salmon Rocket Crunchy Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-smoothy-crunchy-roll"><img class="menu-card-img" src="images/smoothy-crunchy-roll.jpg" alt="Smoothy Crunchy Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Smoothy Crunchy Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Lachs, Avocado, Mango, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Smoothy Crunchy Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-teriyaki-chicken-crunchy-roll"><img class="menu-card-img" src="images/teriyaki-chicken-crunchy-roll.jpg" alt="Teriyaki Chicken Crunchy Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Teriyaki Chicken Crunchy Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Teriyaki-Hähnchen, Avocado, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Teriyaki Chicken Crunchy Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tuna-arugula-crunchy-roll"><img class="menu-card-img" src="images/tuna-arugula-crunchy-roll.jpg" alt="Tuna Arugula Crunchy Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tuna Arugula Crunchy Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Rucola, Thunfisch, Frischkäse, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tuna Arugula Crunchy Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-vegetarian-crunchy-roll"><img class="menu-card-img" src="images/vegetarian-crunchy-roll.jpg" alt="Vegetarian Crunchy Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Vegetarian Crunchy Roll</span><span class="menu-card-price">CHF 16.90</span></div><p class="menu-card-desc">Avocado, Rucola, Gurke, Frischkäse, Röstzwiebeln</p><span class="menu-badge badge-veggie">🥦 Vegetarisch</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Vegetarian Crunchy Roll',16.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- INSIDE OUT -->
+  <div class="menu-section" id="cat-insideout">
+    <div class="menu-section-title">Inside Out Rolls</div>
+    <p class="menu-section-sub">Alle Inside Out Rolls werden mit 8 Stück serviert</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-avo-cheese-roll">
+        <img class="menu-card-img" 
+             src="images/avo-cheese-roll.jpg" 
+             alt="Avo Cheese Roll"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Avo Cheese Roll</span><span class="menu-card-price">CHF 16.90</span></div><p class="menu-card-desc">Avocado, Frischkäse, Sesam</p><span class="menu-badge badge-veggie">🥦 Vegetarisch</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Avo Cheese Roll',16.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-california-roll"><img class="menu-card-img" src="images/california-roll.jpg" alt="California Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">California Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Avocado, Krebsfleisch, Gurke, Tobiko</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('California Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-canadian-delux-spezial-roll"><img class="menu-card-img" src="images/canadian-delux-spezial-roll.jpg" alt="Canadian Delux Spezial Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Canadian Delux Spezial Roll</span><span class="menu-card-price">CHF 20.90</span></div><p class="menu-card-desc">Krebsfleisch-Salat, Lachs, Avocado, Frischkäse, Tobiko</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Canadian Delux Spezial Roll',20.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-canadian-roll"><img class="menu-card-img" src="images/canadian-roll.jpg" alt="Canadian Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Canadian Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Surimi-Salat, Avocado, Tobiko</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Canadian Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-delux-salmon-roll"><img class="menu-card-img" src="images/delux-salmon-roll.jpg" alt="Delux Salmon Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Delux Salmon Roll</span><span class="menu-card-price">CHF 19.90</span></div><p class="menu-card-desc">Tempura-Garnelen, Avocado, Frischkäse, Lachs-Wrap</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Delux Salmon Roll',19.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-fitness-roll"><img class="menu-card-img" src="images/fitness-roll.jpg" alt="Fitness Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Fitness Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Lachs, Avocado, Frischkäse</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Fitness Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-fitness-tuna-roll"><img class="menu-card-img" src="images/fitness-tuna-roll.jpg" alt="Fitness Tuna Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Fitness Tuna Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Thunfisch, Avocado, Frischkäse</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Fitness Tuna Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-flamb-ed-salmon-special-roll"><img class="menu-card-img" src="images/flamb-ed-salmon-special-roll.jpg" alt="Flambéed Salmon Special Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Flambéed Salmon Special Roll</span><span class="menu-card-price">CHF 21.90</span></div><p class="menu-card-desc">Flambierter Lachs, Tempura-Garnelen, Avocado, Frischkäse</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Flambéed Salmon Special Roll',21.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-hot-salmon-roll"><img class="menu-card-img" src="images/hot-salmon-roll.jpg" alt="Hot Salmon Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Hot Salmon Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Scharf gewürzte Lachs-Crème, Avocado, Tobiko</p><span class="menu-badge badge-spicy">🌶 Scharf</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Hot Salmon Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-mango-pacific-roll"><img class="menu-card-img" src="images/mango-pacific-roll.jpg" alt="Mango Pacific Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Mango Pacific Roll</span><span class="menu-card-price">CHF 19.90</span></div><p class="menu-card-desc">Avocado, Lachs, Mango, Frischkäse</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Mango Pacific Roll',19.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-rainbow-roll"><img class="menu-card-img" src="images/rainbow-roll.jpg" alt="Rainbow Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Rainbow Roll</span><span class="menu-card-price">CHF 22.90</span></div><p class="menu-card-desc">Thunfisch, Lachs, Tintenfisch, Garnelen, Frischkäse, Tobiko</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Rainbow Roll',22.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-salmon-rocket-roll"><img class="menu-card-img" src="images/salmon-rocket-roll.jpg" alt="Salmon Rocket Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Salmon Rocket Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Rucola, Lachs, Frischkäse, Sesam</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Salmon Rocket Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-smoothy-roll"><img class="menu-card-img" src="images/smoothy-roll.jpg" alt="Smoothy Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Smoothy Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Lachs, Avocado, Mango im Sesammantel</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Smoothy Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-spicy-tuna-roll"><img class="menu-card-img" src="images/spicy-tuna-roll.jpg" alt="Spicy Tuna Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Spicy Tuna Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Spicy Thunfisch, Avocado</p><span class="menu-badge badge-spicy">🌶 Scharf</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Spicy Tuna Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-teriyaki-chicken-roll"><img class="menu-card-img" src="images/teriyaki-chicken-roll.jpg" alt="Teriyaki Chicken Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Teriyaki Chicken Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Teriyaki-Hähnchen, Gurke, Frischkäse, Sesam</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Teriyaki Chicken Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tuna-rocket-roll"><img class="menu-card-img" src="images/tuna-rocket-roll.jpg" alt="Tuna Rocket Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tuna Rocket Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Rucola, Thunfisch, Frischkäse, Sesam</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tuna Rocket Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tropical-pacific-roll"><img class="menu-card-img" src="images/tropical-pacific-roll.jpg" alt="Tropical Pacific Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tropical Pacific Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Avocado, Tempura-Garnelen, Frischkäse, Mango-Wrap</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tropical Pacific Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tuna-delux-special-roll"><img class="menu-card-img" src="images/tuna-delux-special-roll.jpg" alt="Tuna Delux Special Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tuna Delux Special Roll</span><span class="menu-card-price">CHF 22.90</span></div><p class="menu-card-desc">Thunfisch-Crème, Rucola, Avocado, Gurke, Frischkäse, Teriyaki</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tuna Delux Special Roll',22.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tuna-roll"><img class="menu-card-img" src="images/tuna-roll.jpg" alt="Tuna Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tuna Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Gekochte Thunfisch-Crème mit Sesam</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tuna Roll',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-vegan-roll"><img class="menu-card-img" src="images/vegan-roll.jpg" alt="Vegan Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Vegan Roll</span><span class="menu-card-price">CHF 16.90</span></div><p class="menu-card-desc">Mango, Avocado, Gurke im Sesammantel</p><span class="menu-badge badge-vegan">🌱 Vegan</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Vegan Roll',16.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-vegetarian-roll"><img class="menu-card-img" src="images/vegetarian-roll.jpg" alt="Vegetarian Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Vegetarian Roll</span><span class="menu-card-price">CHF 18.90</span></div><p class="menu-card-desc">Avocado, Rucola, Gurke, Frischkäse, Sesam</p><span class="menu-badge badge-veggie">🥦 Vegetarisch</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Vegetarian Roll',18.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- SMART ROLLS -->
+  <div class="menu-section" id="cat-smartrolls">
+    <div class="menu-section-title">Smart Inside Out Rolls</div>
+    <p class="menu-section-sub">4 Stück pro Portion</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-fitness-smart-roll">
+        <img class="menu-card-img" 
+             src="images/fitness-smart-roll.jpg" 
+             alt="Fitness Smart Roll"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Fitness Smart Roll (4 Stück)</span><span class="menu-card-price">CHF 9.90</span></div><p class="menu-card-desc">Lachs, Avocado, Frischkäse, Sesam</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Fitness Smart Roll',9.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-fitness-crunchy-roll-4-stueck"><img class="menu-card-img" src="images/fitness-crunchy-roll-4-stueck.jpg" alt="Fitness Crunchy Roll (4 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Fitness Crunchy Roll (4 Stück)</span><span class="menu-card-price">CHF 9.90</span></div><p class="menu-card-desc">Lachs, Avocado, Frischkäse, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Fitness Crunchy Roll (4 Stück)',9.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-crunchy-tempura-garnelen-roll"><img class="menu-card-img" src="images/crunchy-tempura-garnelen-roll.jpg" alt="Crunchy Tempura Garnelen Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Crunchy Tempura Garnelen Roll (4 Stück)</span><span class="menu-card-price">CHF 8.90</span></div><p class="menu-card-desc">Avocado, Frischkäse, Tempura-Garnelen, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Crunchy Tempura Garnelen Roll',8.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-mango-pacific-roll-4-stueck"><img class="menu-card-img" src="images/mango-pacific-roll-4-stueck.jpg" alt="Mango Pacific Roll (4 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Mango Pacific Roll (4 Stück)</span><span class="menu-card-price">CHF 9.90</span></div><p class="menu-card-desc">Mango, Lachs, Avocado, Frischkäse</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Mango Pacific Roll (4 Stück)',9.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tropical-pacific-roll-4-stueck"><img class="menu-card-img" src="images/tropical-pacific-roll-4-stueck.jpg" alt="Tropical Pacific Roll (4 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tropical Pacific Roll (4 Stück)</span><span class="menu-card-price">CHF 9.90</span></div><p class="menu-card-desc">Tempura-Garnelen, Avocado, Frischkäse, Mango-Wrap</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tropical Pacific Roll (4 Stück)',9.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-flamb-salmon-roll"><img class="menu-card-img" src="images/flamb-salmon-roll.jpg" alt="Flambé Salmon Roll" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Flambé Salmon Roll</span><span class="menu-card-price">CHF 10.90</span></div><p class="menu-card-desc">Avocado, Tempura-Garnelen, Frischkäse, Flambierter Lachs-Wrap</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Flambé Salmon Roll',10.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-teriyaki-chicken-crunchy-roll-4-stueck"><img class="menu-card-img" src="images/teriyaki-chicken-crunchy-roll-4-stueck.jpg" alt="Teriyaki Chicken Crunchy Roll (4 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Teriyaki Chicken Crunchy Roll (4 Stück)</span><span class="menu-card-price">CHF 9.90</span></div><p class="menu-card-desc">Teriyaki-Hähnchen, Gurke, Frischkäse, Röstzwiebeln</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Teriyaki Chicken Crunchy Roll (4 Stück)',9.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- MAKIS -->
+  <div class="menu-section" id="cat-makis">
+    <div class="menu-section-title">Makis</div>
+    <p class="menu-section-sub">Alle Makis werden mit 8 Stück serviert</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-alaska-maki">
+        <img class="menu-card-img" 
+             src="images/alaska-maki.jpg" 
+             alt="Alaska Maki"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Alaska Maki</span><span class="menu-card-price">CHF 7.90</span></div><p class="menu-card-desc">Gekochte Thunfisch-Paste</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Alaska Maki',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-avocado-maki"><img class="menu-card-img" src="images/avocado-maki.jpg" alt="Avocado Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Avocado Maki</span><span class="menu-card-price">CHF 6.90</span></div><p class="menu-card-desc">Avocado</p><span class="menu-badge badge-vegan">🌱 Vegan</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Avocado Maki',6.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-ebi-maki"><img class="menu-card-img" src="images/ebi-maki.jpg" alt="Ebi Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Ebi Maki</span><span class="menu-card-price">CHF 7.90</span></div><p class="menu-card-desc">Garnelen</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Ebi Maki',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-fitness-maki"><img class="menu-card-img" src="images/fitness-maki.jpg" alt="Fitness Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Fitness Maki</span><span class="menu-card-price">CHF 8.90</span></div><p class="menu-card-desc">Lachs, Avocado, Frischkäse</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Fitness Maki',8.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-kappa-maki"><img class="menu-card-img" src="images/kappa-maki.jpg" alt="Kappa Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Kappa Maki</span><span class="menu-card-price">CHF 5.90</span></div><p class="menu-card-desc">Gurke</p><span class="menu-badge badge-vegan">🌱 Vegan</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Kappa Maki',5.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-lachs-mayo-maki"><img class="menu-card-img" src="images/lachs-mayo-maki.jpg" alt="Lachs Mayo Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Lachs Mayo Maki</span><span class="menu-card-price">CHF 7.90</span></div><p class="menu-card-desc">Lachs-Mayo-Paste</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Lachs Mayo Maki',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-mango-maki"><img class="menu-card-img" src="images/mango-maki.jpg" alt="Mango Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Mango Maki</span><span class="menu-card-price">CHF 6.90</span></div><p class="menu-card-desc">Mango</p><span class="menu-badge badge-vegan">🌱 Vegan</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Mango Maki',6.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-paprika-frisch-maki"><img class="menu-card-img" src="images/paprika-frisch-maki.jpg" alt="Paprika Frisch Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Paprika Frisch Maki</span><span class="menu-card-price">CHF 5.90</span></div><p class="menu-card-desc">Peperoni & Frischkäse</p><span class="menu-badge badge-veggie">🥦 Vegetarisch</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Paprika Frisch Maki',5.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-shake-maki"><img class="menu-card-img" src="images/shake-maki.jpg" alt="Shake Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Shake Maki</span><span class="menu-card-price">CHF 7.90</span></div><p class="menu-card-desc">Lachs</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Shake Maki',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-spicy-tuna-maki"><img class="menu-card-img" src="images/spicy-tuna-maki.jpg" alt="Spicy Tuna Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Spicy Tuna Maki</span><span class="menu-card-price">CHF 8.90</span></div><p class="menu-card-desc">Spicy Thunfisch</p><span class="menu-badge badge-spicy">🌶 Scharf</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Spicy Tuna Maki',8.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-surimi-mayo-maki"><img class="menu-card-img" src="images/surimi-mayo-maki.jpg" alt="Surimi Mayo Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Surimi Mayo Maki</span><span class="menu-card-price">CHF 7.90</span></div><p class="menu-card-desc">Krebsfleisch & Mayo</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Surimi Mayo Maki',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tamago-maki"><img class="menu-card-img" src="images/tamago-maki.jpg" alt="Tamago Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tamago Maki</span><span class="menu-card-price">CHF 7.90</span></div><p class="menu-card-desc">Japan. Omelette</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tamago Maki',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tekka-maki"><img class="menu-card-img" src="images/tekka-maki.jpg" alt="Tekka Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tekka Maki</span><span class="menu-card-price">CHF 7.90</span></div><p class="menu-card-desc">Thunfisch</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tekka Maki',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-teriyaki-chicken-maki"><img class="menu-card-img" src="images/teriyaki-chicken-maki.jpg" alt="Teriyaki Chicken Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Teriyaki Chicken Maki</span><span class="menu-card-price">CHF 7.90</span></div><p class="menu-card-desc">Teriyaki-Hähnchen</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Teriyaki Chicken Maki',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tokyo-special-maki"><img class="menu-card-img" src="images/tokyo-special-maki.jpg" alt="Tokyo Special Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tokyo Special Maki</span><span class="menu-card-price">CHF 9.90</span></div><p class="menu-card-desc">Avocado, Garnelen, Frischkäse</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tokyo Special Maki',9.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tropical-osen-maki"><img class="menu-card-img" src="images/tropical-osen-maki.jpg" alt="Tropical Osen Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tropical Osen Maki</span><span class="menu-card-price">CHF 8.90</span></div><p class="menu-card-desc">Lachs & Mango</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tropical Osen Maki',8.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tuna-fitness-maki"><img class="menu-card-img" src="images/tuna-fitness-maki.jpg" alt="Tuna Fitness Maki" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tuna Fitness Maki</span><span class="menu-card-price">CHF 8.90</span></div><p class="menu-card-desc">Thunfisch, Avocado, Frischkäse</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tuna Fitness Maki',8.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- MOMOS -->
+  <div class="menu-section" id="cat-momos">
+    <div class="menu-section-title">Momos & Gyozas</div>
+    <p class="menu-section-sub">Hausgemachti Dumplings</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-chicken-gyoza-12-stueck">
+        <img class="menu-card-img" 
+             src="images/chicken-gyoza-12-stueck.jpg" 
+             alt="Chicken Gyoza (12 Stück)"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Chicken Gyoza (12 Stück)</span><span class="menu-card-price">CHF 14.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Chicken Gyoza (12 Stück)',14.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-chicken-gyoza-6-stueck"><img class="menu-card-img" src="images/chicken-gyoza-6-stueck.jpg" alt="Chicken Gyoza (6 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Chicken Gyoza (6 Stück)</span><span class="menu-card-price">CHF 7.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Chicken Gyoza (6 Stück)',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-mixed-momo-8-stueck"><img class="menu-card-img" src="images/mixed-momo-8-stueck.jpg" alt="Mixed Momo (8 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Mixed Momo (8 Stück)</span><span class="menu-card-price">CHF 17.90</span></div><p class="menu-card-desc">4 Stück Vegetarisch & 4 Stück Rind-Momos</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Mixed Momo (8 Stück)',17.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-rind-momo-5-stueck"><img class="menu-card-img" src="images/rind-momo-5-stueck.jpg" alt="Rind Momo (5 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Rind Momo (5 Stück)</span><span class="menu-card-price">CHF 12.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Rind Momo (5 Stück)',12.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-vegetarische-gyoza-6-stueck"><img class="menu-card-img" src="images/vegetarische-gyoza-6-stueck.jpg" alt="Vegetarische Gyoza (6 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Vegetarische Gyoza (6 Stück)</span><span class="menu-card-price">CHF 7.90</span></div><span class="menu-badge badge-veggie">🥦 Vegetarisch</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Vegetarische Gyoza (6 Stück)',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-vegetarische-gyoza-12-stueck"><img class="menu-card-img" src="images/vegetarische-gyoza-12-stueck.jpg" alt="Vegetarische Gyoza (12 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Vegetarische Gyoza (12 Stück)</span><span class="menu-card-price">CHF 14.90</span></div><span class="menu-badge badge-veggie">🥦 Vegetarisch</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Vegetarische Gyoza (12 Stück)',14.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-vegetarische-momo-5-stueck"><img class="menu-card-img" src="images/vegetarische-momo-5-stueck.jpg" alt="Vegetarische MoMo (5 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Vegetarische MoMo (5 Stück)</span><span class="menu-card-price">CHF 12.90</span></div><span class="menu-badge badge-veggie">🥦 Vegetarisch</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Vegetarische MoMo (5 Stück)',12.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- NIGIRI -->
+  <div class="menu-section" id="cat-nigiri">
+    <div class="menu-section-title">Nigiri</div>
+    <p class="menu-section-sub">Je 2 Stück pro Portion</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-avocado-nigiri">
+        <img class="menu-card-img" 
+             src="images/avocado-nigiri.jpg" 
+             alt="Avocado Nigiri"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Avocado Nigiri</span><span class="menu-card-price">CHF 6.90</span></div><p class="menu-card-desc">Avocado</p><span class="menu-badge badge-veggie">🥦 Vegetarisch</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Avocado Nigiri',6.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-ebi-nigiri"><img class="menu-card-img" src="images/ebi-nigiri.jpg" alt="Ebi Nigiri" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Ebi Nigiri</span><span class="menu-card-price">CHF 8.90</span></div><p class="menu-card-desc">Garnelen</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Ebi Nigiri',8.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-flambierter-lachs-nigiri"><img class="menu-card-img" src="images/flambierter-lachs-nigiri.jpg" alt="Flambierter Lachs Nigiri" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Flambierter Lachs Nigiri</span><span class="menu-card-price">CHF 9.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Flambierter Lachs Nigiri',9.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-flambierter-thunfisch-nigiri"><img class="menu-card-img" src="images/flambierter-thunfisch-nigiri.jpg" alt="Flambierter Thunfisch Nigiri" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Flambierter Thunfisch Nigiri</span><span class="menu-card-price">CHF 10.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Flambierter Thunfisch Nigiri',10.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-ika-nigiri"><img class="menu-card-img" src="images/ika-nigiri.jpg" alt="Ika Nigiri" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Ika Nigiri</span><span class="menu-card-price">CHF 8.90</span></div><p class="menu-card-desc">Tintenfisch</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Ika Nigiri',8.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-maguro-nigiri"><img class="menu-card-img" src="images/maguro-nigiri.jpg" alt="Maguro Nigiri" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Maguro Nigiri</span><span class="menu-card-price">CHF 9.90</span></div><p class="menu-card-desc">Thunfisch</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Maguro Nigiri',9.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-makrelen-nigiri"><img class="menu-card-img" src="images/makrelen-nigiri.jpg" alt="Makrelen Nigiri" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Makrelen Nigiri</span><span class="menu-card-price">CHF 8.90</span></div><p class="menu-card-desc">Makrele</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Makrelen Nigiri',8.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-sake-nigiri"><img class="menu-card-img" src="images/sake-nigiri.jpg" alt="Sake Nigiri" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Sake Nigiri</span><span class="menu-card-price">CHF 7.90</span></div><p class="menu-card-desc">Lachs</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Sake Nigiri',7.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tako-nigiri"><img class="menu-card-img" src="images/tako-nigiri.jpg" alt="Tako Nigiri" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tako Nigiri</span><span class="menu-card-price">CHF 10.90</span></div><p class="menu-card-desc">Tintenfisch</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tako Nigiri',10.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tamago-nigiri"><img class="menu-card-img" src="images/tamago-nigiri.jpg" alt="Tamago Nigiri" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tamago Nigiri</span><span class="menu-card-price">CHF 8.90</span></div><p class="menu-card-desc">Omelette</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tamago Nigiri',8.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- SASHIMI -->
+  <div class="menu-section" id="cat-sashimi">
+    <div class="menu-section-title">Sashimi</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-thunfisch-sashimi-6-stueck">
+        <img class="menu-card-img" 
+             src="images/thunfisch-sashimi-6-stueck.jpg" 
+             alt="Thunfisch Sashimi (6 Stück)"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Thunfisch Sashimi (6 Stück)</span><span class="menu-card-price">CHF 18.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Thunfisch Sashimi (6 Stück)',18.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-lachs-sashimi-6-stueck"><img class="menu-card-img" src="images/lachs-sashimi-6-stueck.jpg" alt="Lachs Sashimi (6 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Lachs Sashimi (6 Stück)</span><span class="menu-card-price">CHF 15.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Lachs Sashimi (6 Stück)',15.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-sashimi-mix-8-stueck"><img class="menu-card-img" src="images/sashimi-mix-8-stueck.jpg" alt="Sashimi Mix (8 Stück)" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Sashimi Mix (8 Stück)</span><span class="menu-card-price">CHF 25.90</span></div><p class="menu-card-desc">4 Lachs & 4 Thunfisch Sashimi</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Sashimi Mix (8 Stück)',25.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- SUSHI BOXEN -->
+  <div class="menu-section" id="cat-boxes">
+    <div class="menu-section-title">Sushi Boxe</div>
+    <p class="menu-section-sub">Perfekt zum Teile oder für de grössere Hunger</p>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-big-maki-fish-box-48-stueck">
+        <img class="menu-card-img" 
+             src="images/big-maki-fish-box-48-stueck.jpg" 
+             alt="Big Maki Fish Box (48 Stück)"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Big Maki Fish Box (48 Stück)</span><span class="menu-card-price">CHF 44.90</span></div><p class="menu-card-desc">8 Stück je: Lachs, Lachs-Avocado, Alaska, Thunfisch, Lachs-Mayo & Garnelen-Maki</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Big Maki Fish Box (48 Stück)',44.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-california-special-box"><img class="menu-card-img" src="images/california-special-box.jpg" alt="California Special Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">California Special Box (18 Stück)</span><span class="menu-card-price">CHF 25.90</span></div><p class="menu-card-desc">8x California Roll, 8x Surimi-Mayo-Maki, 2x Lachs-Nigiri</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('California Special Box',25.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-deluxe-special-box"><img class="menu-card-img" src="images/deluxe-special-box.jpg" alt="Deluxe Special Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Deluxe Special Box (24 Stück)</span><span class="menu-card-price">CHF 45.90</span></div><p class="menu-card-desc">8x Tuna Deluxe, 8x Deluxe Salmon, 8x Canadian Deluxe Roll</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Deluxe Special Box',45.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-fitness-special-box"><img class="menu-card-img" src="images/fitness-special-box.jpg" alt="Fitness Special Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Fitness Special Box (20 Stück)</span><span class="menu-card-price">CHF 26.90</span></div><p class="menu-card-desc">8x Fitness Roll, 8x Fitness Maki, 2x Lachs-Nigiri</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Fitness Special Box',26.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-inside-out-box"><img class="menu-card-img" src="images/inside-out-box.jpg" alt="Inside Out Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Inside Out Box (16 Stück)</span><span class="menu-card-price">CHF 29.90</span></div><p class="menu-card-desc">4x Tuna, 4x Canadian, 4x Fitness, 4x Smoothy Roll</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Inside Out Box',29.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-lachs-special-box"><img class="menu-card-img" src="images/lachs-special-box.jpg" alt="Lachs Special Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Lachs Special Box (18 Stück)</span><span class="menu-card-price">CHF 28.90</span></div><p class="menu-card-desc">8x Lachs Roll, 8x Lachs Maki, 2x Lachs Nigiri</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Lachs Special Box',28.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-maki-box"><img class="menu-card-img" src="images/maki-box.jpg" alt="Maki Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Maki Box (24 Stück)</span><span class="menu-card-price">CHF 19.90</span></div><p class="menu-card-desc">4x je: Gurke, Avocado, Lachs, Thunfisch, Lachs-Paste, Alaska-Maki</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Maki Box',19.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-nigiri-mixed-big-box"><img class="menu-card-img" src="images/nigiri-mixed-big-box.jpg" alt="Nigiri Mixed Big Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Nigiri Mixed Big Box (12 Stück)</span><span class="menu-card-price">CHF 45.90</span></div><p class="menu-card-desc">12x Gemischti Nigiri</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Nigiri Mixed Big Box',45.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-nigiri-mixed-box-single"><img class="menu-card-img" src="images/nigiri-mixed-box-single.jpg" alt="Nigiri Mixed Box Single" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Nigiri Mixed Box Single (6 Stück)</span><span class="menu-card-price">CHF 21.90</span></div><p class="menu-card-desc">6x Gemischti Nigiri</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Nigiri Mixed Box Single',21.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tokyo-bento-box-1"><img class="menu-card-img" src="images/tokyo-bento-box-1.jpg" alt="Tokyo Bento Box 1" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tokyo Bento Box 1</span><span class="menu-card-price">CHF 59.90</span></div><p class="menu-card-desc">2x Lachs/Thunfisch/Garnelen-Nigiri + div. Maki & Rolls</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tokyo Bento Box 1',59.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tokyo-mixed-maki-box"><img class="menu-card-img" src="images/tokyo-mixed-maki-box.jpg" alt="Tokyo Mixed Maki Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tokyo Mixed Maki Box (48 Stück)</span><span class="menu-card-price">CHF 45.90</span></div><p class="menu-card-desc">8x je: Lachs, Avocado, Mango, Thunfisch, Surimi-Mayo & Teriyaki-Chicken-Maki</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tokyo Mixed Maki Box',45.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tokyo-nigiri-big-box"><img class="menu-card-img" src="images/tokyo-nigiri-big-box.jpg" alt="Tokyo Nigiri Big Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tokyo Nigiri Big Box (12 Stück)</span><span class="menu-card-price">CHF 42.90</span></div><p class="menu-card-desc">4x Lachs, 4x Thunfisch, 4x Garnelen-Nigiri</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tokyo Nigiri Big Box',42.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tokyo-nigiri-box-single"><img class="menu-card-img" src="images/tokyo-nigiri-box-single.jpg" alt="Tokyo Nigiri Box Single" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tokyo Nigiri Box Single (6 Stück)</span><span class="menu-card-price">CHF 21.90</span></div><p class="menu-card-desc">2x Lachs, 2x Thunfisch, 2x Garnelen-Nigiri</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tokyo Nigiri Box Single',21.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-tokyo-party-box-special"><img class="menu-card-img" src="images/tokyo-party-box-special.jpg" alt="Tokyo Party Box Special" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Tokyo Party Box Special</span><span class="menu-card-price">CHF 149.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Tokyo Party Box Special',149.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-vegan-box"><img class="menu-card-img" src="images/vegan-box.jpg" alt="Vegan Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Vegan Box (16 Stück + Edamame)</span><span class="menu-card-price">CHF 25.90</span></div><p class="menu-card-desc">8x Vegan Roll, 4x Avocado-Maki, 4x Mango-Maki + Edamame</p><span class="menu-badge badge-vegan">🌱 Vegan</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Vegan Box',25.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-vegetarische-maki-box"><img class="menu-card-img" src="images/vegetarische-maki-box.jpg" alt="Vegetarische Maki Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Vegetarische Maki Box (32 Stück)</span><span class="menu-card-price">CHF 25.90</span></div><p class="menu-card-desc">8x je: Gurke, Avocado, Mango & Peperoni-Maki</p><span class="menu-badge badge-veggie">🥦 Vegetarisch</span><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Vegetarische Maki Box',25.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-zuerich-special-box"><img class="menu-card-img" src="images/zuerich-special-box.jpg" alt="Zürich Special Box" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Zürich Special Box (20 Stück)</span><span class="menu-card-price">CHF 25.90</span></div><p class="menu-card-desc">8x Lachs-Maki, 8x Thunfisch-Maki, 2x Lachs- & Thunfisch-Nigiri</p><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Zürich Special Box',25.90,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- BEILAGEN -->
+  <div class="menu-section" id="cat-sides">
+    <div class="menu-section-title">Beilade & Sauce</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-chilli-mayo-dip">
+        <img class="menu-card-img" 
+             src="images/chilli-mayo-dip.jpg" 
+             alt="Chilli Mayo Dip"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Chilli Mayo Dip</span><span class="menu-card-price">CHF 1.50</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Chilli Mayo Dip',1.50,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-erdnuss-dip"><img class="menu-card-img" src="images/erdnuss-dip.jpg" alt="Erdnuss Dip" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Erdnuss Dip</span><span class="menu-card-price">CHF 1.50</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Erdnuss Dip',1.50,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-ingwer"><img class="menu-card-img" src="images/ingwer.jpg" alt="Ingwer" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Ingwer</span><span class="menu-card-price">CHF 2.00</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Ingwer',2.00,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-mango-dip"><img class="menu-card-img" src="images/mango-dip.jpg" alt="Mango Dip" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Mango Dip</span><span class="menu-card-price">CHF 1.50</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Mango Dip',1.50,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-sesam-dip"><img class="menu-card-img" src="images/sesam-dip.jpg" alt="Sesam Dip" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Sesam Dip</span><span class="menu-card-price">CHF 1.50</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Sesam Dip',1.50,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-sojasauce"><img class="menu-card-img" src="images/sojasauce.jpg" alt="Sojasauce" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Sojasauce</span><span class="menu-card-price">CHF 2.00</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Sojasauce',2.00,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-sushi-reis"><img class="menu-card-img" src="images/sushi-reis.jpg" alt="Sushi-Reis" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Sushi-Reis</span><span class="menu-card-price">CHF 4.00</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Sushi-Reis',4.00,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-teriyaki-dip"><img class="menu-card-img" src="images/teriyaki-dip.jpg" alt="Teriyaki Dip" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Teriyaki Dip</span><span class="menu-card-price">CHF 2.00</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Teriyaki Dip',2.00,this,'food')">+</button></div></div>
+    </div>
+  </div>
+
+  <!-- DESSERTS -->
+  <div class="menu-section" id="cat-desserts">
+    <div class="menu-section-title">Desserts</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-kokosnuss-mochi">
+        <img class="menu-card-img" 
+             src="images/kokosnuss-mochi.jpg" 
+             alt="Kokosnuss Mochi"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Kokosnuss Mochi (2 Stück)</span><span class="menu-card-price">CHF 5.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Kokosnuss Mochi',5.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-mango-mochi"><img class="menu-card-img" src="images/mango-mochi.jpg" alt="Mango Mochi" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Mango Mochi (2 Stück)</span><span class="menu-card-price">CHF 5.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Mango Mochi',5.90,this,'food')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-top"><span class="menu-card-name">Karamell Mochi (2 Stück)</span><span class="menu-card-price">—</span></div><span class="menu-badge badge-unavail">Momentan nicht verfügbar</span></div>
+      <div class="menu-card"><div class="menu-card-top"><span class="menu-card-name">Schokolade Mochi (2 Stück)</span><span class="menu-card-price">—</span></div><span class="menu-badge badge-unavail">Momentan nicht verfügbar</span></div>
+    </div>
+  </div>
+
+  <!-- GETRÄNKE -->
+  <div class="menu-section" id="cat-drinks">
+    <div class="menu-section-title">Getränk</div>
+    <div class="menu-grid">
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-coca-cola-0-5l">
+        <img class="menu-card-img" 
+             src="images/coca-cola-0-5l.jpg" 
+             alt="Coca-Cola 0.5l"
+             onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="menu-card-top"><span class="menu-card-name">Coca-Cola 0.5l</span><span class="menu-card-price">CHF 3.50</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Coca-Cola 0.5l',3.50,this,'drink')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-coca-cola-zero-0-5l"><img class="menu-card-img" src="images/coca-cola-zero-0-5l.jpg" alt="Coca-Cola ZERO 0.5l" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Coca-Cola ZERO 0.5l</span><span class="menu-card-price">CHF 3.50</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Coca-Cola ZERO 0.5l',3.50,this,'drink')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-fanta-orange-0-5l"><img class="menu-card-img" src="images/fanta-orange-0-5l.jpg" alt="Fanta Orange 0.5l" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Fanta Orange 0.5l</span><span class="menu-card-price">CHF 3.50</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Fanta Orange 0.5l',3.50,this,'drink')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-sprite-0-5l"><img class="menu-card-img" src="images/sprite-0-5l.jpg" alt="Sprite 0.5l" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Sprite 0.5l</span><span class="menu-card-price">CHF 3.50</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Sprite 0.5l',3.50,this,'drink')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-apfelschorle-0-5l"><img class="menu-card-img" src="images/apfelschorle-0-5l.jpg" alt="Apfelschorle 0.5l" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Apfelschorle 0.5l</span><span class="menu-card-price">CHF 3.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Apfelschorle 0.5l',3.90,this,'drink')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-arizona-green-tea-0-5l"><img class="menu-card-img" src="images/arizona-green-tea-0-5l.jpg" alt="Arizona Green Tea 0.5l" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Arizona Green Tea 0.5l</span><span class="menu-card-price">CHF 3.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Arizona Green Tea 0.5l',3.90,this,'drink')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-arizona-mucho-mango-0-5l"><img class="menu-card-img" src="images/arizona-mucho-mango-0-5l.jpg" alt="Arizona Mucho Mango 0.5l" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Arizona Mucho Mango 0.5l</span><span class="menu-card-price">CHF 3.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Arizona Mucho Mango 0.5l',3.90,this,'drink')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-mineralwasser-0-5l"><img class="menu-card-img" src="images/mineralwasser-0-5l.jpg" alt="Mineralwasser 0.5l" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Mineralwasser 0.5l</span><span class="menu-card-price">CHF 3.50</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Mineralwasser 0.5l',3.50,this,'drink')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-stilles-wasser-0-5l"><img class="menu-card-img" src="images/stilles-wasser-0-5l.jpg" alt="Stilles Wasser 0.5l" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">Stilles Wasser 0.5l</span><span class="menu-card-price">CHF 3.50</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('Stilles Wasser 0.5l',3.50,this,'drink')">+</button></div></div>
+      <div class="menu-card"><div class="menu-card-img-wrap" id="img-redbull-0-25l"><img class="menu-card-img" src="images/redbull-0-25l.jpg" alt="RedBull 0.25l" onerror="this.parentElement.style.display='none'"></div><div class="menu-card-top"><span class="menu-card-name">RedBull 0.25l</span><span class="menu-card-price">CHF 3.90</span></div><div class="menu-card-footer"><div></div><button class="add-to-cart-btn" onclick="addItem('RedBull 0.25l',3.90,this,'drink')">+</button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up">Authentisches Sushi seit über 20 Jahren</div>
+    <h1 class="fade-up d1">Authentische<br><em>Japanische</em><br>Küche</h1>
+    <p class="hero-desc fade-up d2">Seit über 20 Jahren bereiten wir mit Leidenschaft frische Sushi Rolls, Bowls und Momos zu — täglich frisch, mit echten Zutaten und japanischer Sorgfalt. Direkt zu Ihnen nach Zürich.</p>
+    <div class="hero-cta fade-up d3">
+      <a href="#menu" class="btn-primary">Menü ansehen</a>
+      <a href="#contact" class="btn-ghost">Uns finden</a>
+    </div>
+    <div class="hero-badges fade-up d4">
+      <div><div class="hero-badge-num">100+</div><div class="hero-badge-label">Gerichte</div></div>
+      <div><div class="hero-badge-num">20+</div><div class="hero-badge-label">Jahre Erfahrung</div></div>
+      <div><div class="hero-badge-num">Zürich</div><div class="hero-badge-label">8004</div></div>
+    </div>
+  </div>
+  <div class="hero-right"><div class="hero-img-overlay"></div></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:#fdf8f3;padding:5rem 3rem;">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <p class="section-tag reveal" style="justify-content:center;margin-bottom:1rem;">Unsere Geschichte</p>
+    <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;margin-bottom:2rem;">20 Jahre <em style="color:var(--orange);font-style:italic;">Leidenschaft</em> für Sushi</h2>
+    <p class="reveal" style="font-size:1.05rem;line-height:1.9;color:#6b6b6b;max-width:680px;margin:0 auto 1.5rem;font-weight:300;">Was als Leidenschaft begann, ist heute unser Herzstück: <strong>Sushi Rolls & Bowls</strong> in Zürich. Seit über 20 Jahren widmen wir uns der Kunst des frischen Sushis — mit echten Zutaten, handwerklichem Können und echter Hingabe.</p>
+    <p class="reveal" style="font-size:1.05rem;line-height:1.9;color:#6b6b6b;max-width:680px;margin:0 auto 2.5rem;font-weight:300;">Frisch zubereitet, täglich in unserem Restaurant an der Pflanzschulstrasse 15 in Zürich 4 — zum Abholen oder direkt zu Ihnen nach Hause.</p>
+    <div class="reveal" style="display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;">
+      <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--orange);">20+</div><div style="font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:#888;">Jahre Erfahrung</div></div>
+      <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--orange);">100+</div><div style="font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:#888;">Gerichte</div></div>
+      <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--orange);">🍣</div><div style="font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:#888;">Täglich frisch</div></div>
+      <div style="text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--orange);">❤️</div><div style="font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;color:#888;">Mit Leidenschaft</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left reveal">
+    <p class="section-tag">Finden Sie uns</p>
+    <h2>Kontakt &<br><em>Öffnungszeiten</em></h2>
+    <div class="contact-grid">
+      <div class="contact-block"><label>Adresse</label><p>Pflanzschulstrasse 15<br>CH-8004 Zürich</p></div>
+      <div class="contact-block"><label>Telefon</label><a href="tel:+41779527477">+41 77 952 74 77</a><br><a href="tel:+41432349159">043 234 91 59</a></div>
+      <div class="contact-block"><label>Website</label><a href="https://www.sushirollsbowls.ch">www.sushirollsbowls.ch</a></div>
+      <div class="contact-block"><label>E-Mail</label><a href="mailto:info@sushirollsbowls.ch">info@sushirollsbowls.ch</a></div>
+      <div class="contact-block" style="grid-column:1/-1">
+        <label>Öffnungszeiten</label>
+        <div class="hours-list">
+          <div class="hours-row"><span>Montag – Donnerstag</span><span>11:00 – 22:00</span></div>
+          <div class="hours-row"><span>Freitag</span><span>11:00 – 23:00</span></div>
+          <div class="hours-row"><span>Samstag</span><span>13:00 – 23:00</span></div>
+          <div class="hours-row"><span>Sonntag</span><span>13:00 – 22:00</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-right">
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2702.6!2d8.5317!3d47.3719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a0b0b0b0b0b%3A0x0!2sPflanzschulstrasse%2015%2C%208004%20Z%C3%BCrich!5e0!3m2!1sde!2sch!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Sushi Rolls & Bowls Standort"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="#hero" class="footer-logo"><span>Sushi Rolls <em>&</em> Bowls</span></a>
+  <p>© 2026 Sushi Rolls & Bowls · Pflanzschulstrasse 15 · 8004 Zürich</p>
+  <div class="footer-links"><a href="#">Impressum</a><a href="#">Dateschutz</a><a href="https://instagram.com" target="_blank">Instagram</a></div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>🛒 Warenkorb</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty"><div style="font-size:3rem;margin-bottom:10px;">🍣</div><p style="color:var(--gray);">Warenkorb ist leer</p><p style="font-size:12px;color:var(--gray);margin-top:6px;">Füge Artikel aus dem Menü hinzu!</p></div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row"><span>Total</span><span id="cartTotalAmt">CHF 0.00</span></div>
+    <div class="cart-order-type">
+      <button class="cot-btn active" id="cot_pickup" onclick="setCartOT('pickup',this)">🏪 Pickup</button>
+      <button class="cot-btn" id="cot_delivery" onclick="setCartOT('delivery',this)">🛵 Delivery</button>
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">Zur Kasse →</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>📋 Bestellung abschliessen</h3>
+      <button class="modal-close" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="mf"><label>Vollständiger Name *</label><input type="text" id="co_name" placeholder="Max Mustermann"></div>
+      <div class="mf"><label>Telefon / WhatsApp *</label><input type="tel" id="co_phone" placeholder="+41 77 000 0000"></div>
+      <div class="mf" id="delivery_addr" style="display:none;"><label>Lieferadresse *</label><input type="text" id="co_address" placeholder="Strasse, Hausnummer, PLZ Zürich"></div>
+      <div class="mf"><label>Bemerkungen</label><input type="text" id="co_notes" placeholder="Allergien, Sonderwünsche..."></div>
+      <div class="order-summary-box">
+        <div class="os-title">Bestellübersicht</div>
+        <div id="modalItems"></div>
+        <div id="modalTaxRows"></div>
+        <div class="os-total"><span>Total (inkl. MwSt.)</span><span id="modalTotal">CHF 0.00</span></div>
+      </div>
+      <p style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:10px;font-weight:600;">Zahlungsmethode</p>
+      <div class="pay-methods">
+        <div class="pay-m active" onclick="selectPay(this,'cash')"><span class="pay-m-icon">💵</span><span class="pay-m-name">BAR</span></div>
+        <div class="pay-m" onclick="selectPay(this,'twint')"><span class="pay-m-icon">📱</span><span class="pay-m-name">TWINT</span></div>
+        <div class="pay-m" onclick="selectPay(this,'card')"><span class="pay-m-icon">💳</span><span class="pay-m-name">KARTE</span></div>
+        <div class="pay-m" onclick="selectPay(this,'online')"><span class="pay-m-icon">🌐</span><span class="pay-m-name">ONLINE</span></div>
+      </div>
+      <button class="submit-order-btn" onclick="submitOrder()">✅ Bestellung absenden</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">🎉</div>
+    <h2>Bestellung erhalten!</h2>
+    <p>Vielen Dank! Deine Bestellung wurde aufgenommen. Wir bereiten alles frisch zu!</p>
+    <div class="success-num" id="successNum">Bestellung #0000</div>
+    <p style="font-size:12px;color:var(--gray);margin-bottom:20px;">📞 Bei Fragen: <a href="tel:+41432349159" style="color:var(--orange);">043 234 91 59</a></p>
+    <button class="success-close" onclick="closeSuccess()">Weiter bestellen</button>
+  </div>
+</div>
+
+<!-- STICKY CART -->
+<div class="sticky-cart" id="stickyCart">
+  <div class="sticky-info"><span id="stickyCount">0 Artikel</span> · <strong id="stickyTotal">CHF 0.00</strong></div>
+  <button class="sticky-btn" onclick="toggleCart()">🛒 Warenkorb</button>
+</div>
+
+<script>
+  // ── TAX RATES (Swiss MwSt, gross-inclusive) ──
+  var TAX_FOOD  = 0.026; // 2.6% Speisen
+  var TAX_DRINK = 0.081; // 8.1% Getränke
+
+  // ── CART STATE ──
+  var cart = [];
+  var orderType = 'pickup';
+  var payMethod = 'cash';
+
+  // calcTax: splits cart into food/drink and extracts net + tax from gross prices
+  function calcTax() {
+    var foodGross = 0, drinkGross = 0;
+    cart.forEach(function(c) {
+      var line = c.price * c.qty;
+      if (c.taxType === 'drink') drinkGross += line;
+      else foodGross += line;
+    });
+    var foodTax   = foodGross  - (foodGross  / (1 + TAX_FOOD));
+    var drinkTax  = drinkGross - (drinkGross / (1 + TAX_DRINK));
+    return {
+      foodGross:  foodGross,
+      drinkGross: drinkGross,
+      foodNet:    foodGross  - foodTax,
+      drinkNet:   drinkGross - drinkTax,
+      foodTax:    foodTax,
+      drinkTax:   drinkTax,
+      total:      foodGross + drinkGross
+    };
+  }
+
+  function addItem(name, price, btn, taxType) {
+    var existing = cart.find(function(c){ return c.name === name; });
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({name: name, price: price, qty: 1, taxType: taxType || 'food'});
+    }
+    updateCartUI();
+    // Flash button green
+    btn.style.background = '#27ae60';
+    btn.textContent = '✓';
+    setTimeout(function(){
+      btn.style.background = '';
+      btn.textContent = '+';
+    }, 600);
+  }
+
+  function changeQty(idx, delta) {
+    cart[idx].qty += delta;
+    if (cart[idx].qty <= 0) cart.splice(idx, 1);
+    updateCartUI();
+  }
+
+  function getTotal() {
+    return cart.reduce(function(s,c){ return s + c.price * c.qty; }, 0);
+  }
+
+  function getTotalItems() {
+    return cart.reduce(function(s,c){ return s + c.qty; }, 0);
+  }
+
+  function updateCartUI() {
+    var total = getTotal();
+    var totalItems = getTotalItems();
+
+    // Badge
+    var badge = document.getElementById('cartBadge');
+    if (totalItems > 0) { badge.classList.add('show'); badge.textContent = totalItems; }
+    else { badge.classList.remove('show'); }
+
+    // Total
+    document.getElementById('cartTotalAmt').textContent = 'CHF ' + total.toFixed(2);
+
+    // Sticky
+    document.getElementById('stickyCount').textContent = totalItems + ' Artikel';
+    document.getElementById('stickyTotal').textContent = 'CHF ' + total.toFixed(2);
+    if (totalItems > 0) document.getElementById('stickyCart').classList.add('visible');
+    else document.getElementById('stickyCart').classList.remove('visible');
+
+    // Cart items
+    var el = document.getElementById('cartItems');
+    if (cart.length === 0) {
+      el.innerHTML = '<div class="cart-empty"><div style="font-size:3rem;margin-bottom:10px;">🍣</div><p style="color:var(--gray);">Warenkorb ist leer</p></div>';
+      return;
+    }
+    var html = '';
+    cart.forEach(function(item, idx) {
+      html += '<div class="cart-item">' +
+        '<div class="cart-item-info"><div class="cart-item-name">' + item.name + '</div>' +
+        '<div class="cart-item-price">CHF ' + (item.price * item.qty).toFixed(2) + '</div></div>' +
+        '<div class="cart-item-qty">' +
+          '<button class="cqty-btn" onclick="changeQty(' + idx + ',-1)">−</button>' +
+          '<span class="cqty-num">' + item.qty + '</span>' +
+          '<button class="cqty-btn" onclick="changeQty(' + idx + ',1)">+</button>' +
+        '</div></div>';
+    });
+    el.innerHTML = html;
+  }
+
+  function toggleCart() {
+    document.getElementById('cartSidebar').classList.toggle('open');
+    document.getElementById('cartOverlay').classList.toggle('show');
+  }
+
+  function setOrderType(type, btn) {
+    orderType = type;
+    document.querySelectorAll('.ot-tab').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    // Sync cart order type
+    document.getElementById('cot_' + type).click();
+  }
+
+  function setCartOT(type, btn) {
+    orderType = type;
+    document.querySelectorAll('.cot-btn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    // Sync top bar
+    document.getElementById('ot_' + type).classList.add('active');
+    document.querySelectorAll('.ot-tab').forEach(function(b){
+      if (b.id !== 'ot_' + type) b.classList.remove('active');
+    });
+    // Show/hide delivery address in modal
+    var addrField = document.getElementById('delivery_addr');
+    if (addrField) addrField.style.display = type === 'delivery' ? 'flex' : 'none';
+  }
+
+  function selectPay(el, method) {
+    payMethod = method;
+    document.querySelectorAll('.pay-m').forEach(function(m){m.classList.remove('active');});
+    el.classList.add('active');
+  }
+
+  function openCheckout() {
+    if (cart.length === 0) { alert('Bitte füge zuerst Artikel hinzu!'); return; }
+    toggleCart();
+    // Build modal summary
+    var items = cart.map(function(c){
+      return '<div class="os-item"><span>' + c.qty + 'x ' + c.name + '</span><span>CHF ' + (c.price*c.qty).toFixed(2) + '</span></div>';
+    }).join('');
+    document.getElementById('modalItems').innerHTML = items;
+
+    // Tax breakdown
+    var t = calcTax();
+    var taxHtml = '<hr style="border:none;border-top:1px dashed #ede8e0;margin:8px 0;">';
+    if (t.foodGross > 0) {
+      taxHtml += '<div style="display:flex;justify-content:space-between;font-size:12px;color:#6b6b6b;margin-bottom:3px;"><span>Speisen Netto</span><span>CHF ' + t.foodNet.toFixed(2) + '</span></div>';
+      taxHtml += '<div style="display:flex;justify-content:space-between;font-size:12px;color:#6b6b6b;margin-bottom:3px;"><span>MwSt. 2.6% Speisen</span><span>CHF ' + t.foodTax.toFixed(2) + '</span></div>';
+    }
+    if (t.drinkGross > 0) {
+      taxHtml += '<div style="display:flex;justify-content:space-between;font-size:12px;color:#6b6b6b;margin-bottom:3px;"><span>Getränke Netto</span><span>CHF ' + t.drinkNet.toFixed(2) + '</span></div>';
+      taxHtml += '<div style="display:flex;justify-content:space-between;font-size:12px;color:#6b6b6b;margin-bottom:3px;"><span>MwSt. 8.1% Getränke</span><span>CHF ' + t.drinkTax.toFixed(2) + '</span></div>';
+    }
+    document.getElementById('modalTaxRows').innerHTML = taxHtml;
+    document.getElementById('modalTotal').textContent = 'CHF ' + t.total.toFixed(2);
+    document.getElementById('delivery_addr').style.display = orderType === 'delivery' ? 'flex' : 'none';
+    document.getElementById('checkoutModal').classList.add('show');
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkoutModal').classList.remove('show');
+  }
+
+  function submitOrder() {
+    var name = document.getElementById('co_name').value.trim();
+    var phone = document.getElementById('co_phone').value.trim();
+    var address = document.getElementById('co_address').value.trim();
+    var notes = document.getElementById('co_notes').value.trim();
+
+    if (!name || !phone) { alert('Bitte Name und Telefon eingeben!'); return; }
+    if (orderType === 'delivery' && !address) { alert('Bitte Lieferadresse eingeben!'); return; }
+
+    var orderNum = Math.floor(Math.random() * 9000) + 1000;
+    var typeTxt = orderType === 'pickup' ? '🏪 PICKUP' : '🛵 DELIVERY';
+    var payTxt = {cash:'Bar',twint:'TWINT',card:'Karte',online:'Online'}[payMethod] || payMethod;
+
+    window.open('https://wa.me/0041779527477?text=' + encodeURIComponent(msg), '_blank');
+
+    closeCheckout();
+    document.getElementById('successNum').textContent = 'Bestellung #' + orderNum + ' · CHF ' + _tax.total.toFixed(2);
+    document.getElementById('successOverlay').classList.add('show');
+
+    cart = [];
+    updateCartUI();
+  }
+
+  function closeSuccess() {
+    document.getElementById('successOverlay').classList.remove('show');
+  }
+
+  // Menu category switcher
+  function showCat(id, btn) {
+    document.querySelectorAll('.menu-cat').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    document.querySelectorAll('.menu-section').forEach(function(s){s.classList.remove('visible');});
+    document.getElementById('cat-' + id).classList.add('visible');
+    document.getElementById('menu').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#mobileMenu') && !e.target.closest('.hamburger')) {
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+  });
+
+  // Scroll reveal
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+
+  console.log('✅ Sushi Rolls & Bowls — Ready!');
+</script>
+</body>
+</html>
