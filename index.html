@@ -954,7 +954,7 @@
       items: cart.map(function(c){ return {name:c.name, price:c.price, qty:c.qty}; }),
       total: getTotal()
     };
-    fetch('https://print.sushirollsbowls.ch/print', {
+    fetch('https://48902bcf-dd80-46ea-a5a6-3eed76011ff2.cfargotunnel.com/print', {
       method: 'POST',
       headers: {'Content-Type': 'application/json', 'bypass-tunnel-reminder': 'true'},
       body: JSON.stringify(printData)
