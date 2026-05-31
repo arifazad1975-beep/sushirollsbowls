@@ -954,7 +954,7 @@
       items: cart.map(function(c){ return {name:c.name, price:c.price, qty:c.qty}; }),
       total: getTotal()
     };
-    fetch('https://sushi-rolls-bowls-zurich.loca.lt/print', {
+    fetch('http://192.168.178.26:3000/print', {
       method: 'POST',
       headers: {'Content-Type': 'application/json', 'bypass-tunnel-reminder': 'true'},
       body: JSON.stringify(printData)
