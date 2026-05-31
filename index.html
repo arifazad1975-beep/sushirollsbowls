@@ -956,7 +956,7 @@
     };
     fetch('https://daintily-brute-expel.ngrok-free.dev/print', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json', 'bypass-tunnel-reminder': 'true'},
+      headers: {'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true'},
       body: JSON.stringify(printData)
     }).then(function(){ console.log('Bon gedruckt!'); })
       .catch(function(){ console.log('Drucker nicht erreichbar'); });
