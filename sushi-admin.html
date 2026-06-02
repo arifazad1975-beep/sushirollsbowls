@@ -89,6 +89,30 @@
     .toast{position:fixed;bottom:24px;right:24px;background:var(--green);color:white;padding:12px 20px;border-radius:4px;font-size:13px;font-weight:600;transform:translateY(100px);transition:transform 0.3s;z-index:9999;}
     .toast.show{transform:translateY(0);}.toast.error{background:var(--red);}
     @media(max-width:768px){.main{grid-template-columns:1fr;}.sidebar{display:none;}.stats-grid{grid-template-columns:1fr 1fr;}}
+    .report-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px;}
+    .report-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:20px;}
+    .report-card-title{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:8px;}
+    .report-card-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--orange);}
+    .report-card-sub{font-size:11px;color:var(--gray);margin-top:4px;}
+    .tax-box{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:20px;margin-bottom:24px;}
+    .tax-box-title{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:16px;font-weight:600;}
+    .tax-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+    .tax-row:last-child{border-bottom:none;font-weight:700;font-size:15px;}
+    .tax-row-label{color:var(--text);}
+    .tax-row-value{color:var(--white);font-weight:600;}
+    .tax-row-value.orange{color:var(--orange);}
+    .orders-table{width:100%;border-collapse:collapse;}
+    .orders-table th{text-align:left;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);padding:10px 14px;border-bottom:1px solid var(--border);}
+    .orders-table td{padding:10px 14px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:top;}
+    .orders-table tr:hover td{background:var(--surface2);}
+    @media print{
+      .sidebar,.topbar,.no-print{display:none!important;}
+      #page-sales{display:block!important;}
+      body{background:white!important;color:black!important;}
+      .report-card,.tax-box{border:1px solid #ccc!important;background:white!important;}
+      .report-card-num,.tax-row-value.orange{color:#e8420a!important;}
+      .tax-row-label,.tax-row-value,.orders-table td,.orders-table th{color:black!important;}
+    }
   </style>
 </head>
 <body>
@@ -117,6 +141,7 @@
       <div class="sidebar-link active" onclick="showPage('dashboard',this)"><span>📊</span> Dashboard</div>
       <div class="sidebar-link" onclick="showPage('menu',this)"><span>🍱</span> Menü</div>
       <div class="sidebar-link" onclick="showPage('categories',this)"><span>📂</span> Kategorien</div>
+      <div class="sidebar-link" onclick="showPage('sales',this)"><span>📊</span> Verkaufsbericht</div>
       <div class="sidebar-section">Links</div>
       <div class="sidebar-link" onclick="window.open('https://sushirollsbowls.ch','_blank')"><span>🌐</span> Website</div>
     </div>
@@ -170,6 +195,25 @@
           <thead><tr><th>Bild</th><th>Name</th><th>Kategorie</th><th>Preis</th><th>Status</th><th>Aktionen</th></tr></thead>
           <tbody id="menuTableBody"></tbody>
         </table>
+      </div>
+
+      <!-- SALES REPORT -->
+      <div class="page" id="page-sales">
+        <div class="page-header no-print">
+          <div class="page-title">Verkaufsbericht <span>MwSt</span></div>
+          <div style="display:flex;gap:10px;">
+            <button class="btn-secondary no-print" onclick="loadSalesReport()">Aktualisieren</button>
+            <button class="btn-primary no-print" onclick="window.print()">Drucken / PDF</button>
+          </div>
+        </div>
+        <div class="no-print" style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:16px;margin-bottom:24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+          <div><label style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);font-weight:600;display:block;margin-bottom:6px;">Monat</label>
+          <select id="reportMonth" class="form-select" style="width:150px;"><option value="0">Januar</option><option value="1">Februar</option><option value="2">Maerz</option><option value="3">April</option><option value="4">Mai</option><option value="5">Juni</option><option value="6">Juli</option><option value="7">August</option><option value="8">September</option><option value="9">Oktober</option><option value="10">November</option><option value="11">Dezember</option></select></div>
+          <div><label style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);font-weight:600;display:block;margin-bottom:6px;">Jahr</label>
+          <select id="reportYear" class="form-select" style="width:100px;"><option value="2026">2026</option><option value="2025">2025</option></select></div>
+          <div style="margin-top:20px;"><button class="btn-primary" onclick="loadSalesReport()">Laden</button></div>
+        </div>
+        <div id="salesContent"><div style="text-align:center;padding:40px;color:var(--gray);">Monat auswaehlen und laden</div></div>
       </div>
 
       <!-- CATEGORIES -->
@@ -552,6 +596,139 @@ function deleteItem(idx){
 function toggleActive(idx){
   MENU[idx].active=!MENU[idx].active; saveMenu(); renderAll();
 }
+
+// ── SALES REPORT ──
+var NGROK_URL = 'https://daintily-brute-expel.ngrok-free.dev';
+var DRINK_NAMES = ['Coca-Cola','Fanta','Sprite','Apfelschorle','Arizona','Mineralwasser','Stilles Wasser','RedBull'];
+var TAX_FOOD = 0.026;
+var TAX_DRINK = 0.081;
+
+function isDrink(name){
+  return DRINK_NAMES.some(function(d){ return name.toLowerCase().includes(d.toLowerCase()); });
+}
+
+function loadSalesReport(){
+  var month = parseInt(document.getElementById('reportMonth').value);
+  var year  = parseInt(document.getElementById('reportYear').value);
+  var monthNames = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+  document.getElementById('salesContent').innerHTML = '<div style="text-align:center;padding:40px;color:var(--gray);">Lade Bestellungen...</div>';
+
+  fetch(NGROK_URL + '/orders', {
+    headers: {'ngrok-skip-browser-warning': 'true'}
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(orders){
+    // Filter by month/year
+    var filtered = orders.filter(function(o){
+      var d = new Date(o.savedAt);
+      return d.getMonth() === month && d.getFullYear() === year;
+    });
+
+    if(!filtered.length){
+      document.getElementById('salesContent').innerHTML = '<div style="text-align:center;padding:40px;color:var(--gray);">Keine Bestellungen in diesem Monat</div>';
+      return;
+    }
+
+    // Calculate totals
+    var foodGross=0, drinkGross=0, totalOrders=filtered.length;
+    var paymentTotals = {};
+
+    filtered.forEach(function(o){
+      if(o.items){
+        o.items.forEach(function(item){
+          var lineTotal = item.price * item.qty;
+          if(isDrink(item.name)) drinkGross += lineTotal;
+          else foodGross += lineTotal;
+        });
+      }
+      var pay = o.payMethod || 'Bar';
+      paymentTotals[pay] = (paymentTotals[pay]||0) + (o.total||0);
+    });
+
+    var foodTax   = foodGross  - (foodGross  / (1 + TAX_FOOD));
+    var drinkTax  = drinkGross - (drinkGross / (1 + TAX_DRINK));
+    var foodNet   = foodGross  - foodTax;
+    var drinkNet  = drinkGross - drinkTax;
+    var totalGross = foodGross + drinkGross;
+    var totalTax   = foodTax + drinkTax;
+    var totalNet   = foodNet + drinkNet;
+
+    // Build report HTML
+    var html = '';
+
+    // Print header
+    html += '<div id="printHeader" style="text-align:center;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--border);">';
+    html += '<div style="font-size:18px;font-weight:700;color:var(--white);">HIRS Gastro GmbH</div>';
+    html += '<div style="font-size:13px;color:var(--gray);">Sushi Rolls & Bowls · Pflanzschulstrasse 15, 8004 Zürich</div>';
+    html += '<div style="font-size:15px;font-weight:600;color:var(--orange);margin-top:8px;">Monatsbericht: '+monthNames[month]+' '+year+'</div>';
+    html += '</div>';
+
+    // Summary cards
+    html += '<div class="report-grid">';
+    html += '<div class="report-card"><div class="report-card-title">Bestellungen</div><div class="report-card-num">'+totalOrders+'</div><div class="report-card-sub">im '+monthNames[month]+'</div></div>';
+    html += '<div class="report-card"><div class="report-card-title">Bruttoumsatz</div><div class="report-card-num">CHF '+totalGross.toFixed(2)+'</div><div class="report-card-sub">inkl. MwSt.</div></div>';
+    html += '<div class="report-card"><div class="report-card-title">Gesamte MwSt.</div><div class="report-card-num">CHF '+totalTax.toFixed(2)+'</div><div class="report-card-sub">abzuführen</div></div>';
+    html += '</div>';
+
+    // Tax breakdown
+    html += '<div class="tax-box">';
+    html += '<div class="tax-box-title">MwSt. Abrechnung — '+monthNames[month]+' '+year+'</div>';
+    if(foodGross > 0){
+      html += '<div class="tax-row"><span class="tax-row-label">Speisen Brutto (2.6% MwSt)</span><span class="tax-row-value">CHF '+foodGross.toFixed(2)+'</span></div>';
+      html += '<div class="tax-row"><span class="tax-row-label">Speisen Netto</span><span class="tax-row-value">CHF '+foodNet.toFixed(2)+'</span></div>';
+      html += '<div class="tax-row"><span class="tax-row-label">MwSt. 2.6% Speisen</span><span class="tax-row-value orange">CHF '+foodTax.toFixed(2)+'</span></div>';
+    }
+    if(drinkGross > 0){
+      html += '<div class="tax-row"><span class="tax-row-label">Getränke Brutto (8.1% MwSt)</span><span class="tax-row-value">CHF '+drinkGross.toFixed(2)+'</span></div>';
+      html += '<div class="tax-row"><span class="tax-row-label">Getränke Netto</span><span class="tax-row-value">CHF '+drinkNet.toFixed(2)+'</span></div>';
+      html += '<div class="tax-row"><span class="tax-row-label">MwSt. 8.1% Getränke</span><span class="tax-row-value orange">CHF '+drinkTax.toFixed(2)+'</span></div>';
+    }
+    html += '<div class="tax-row" style="margin-top:8px;border-top:2px solid var(--border);padding-top:12px;"><span class="tax-row-label">Total Netto</span><span class="tax-row-value">CHF '+totalNet.toFixed(2)+'</span></div>';
+    html += '<div class="tax-row"><span class="tax-row-label">Total MwSt. (abzuführen)</span><span class="tax-row-value orange">CHF '+totalTax.toFixed(2)+'</span></div>';
+    html += '<div class="tax-row"><span class="tax-row-label" style="font-weight:700;">Total Brutto</span><span class="tax-row-value orange" style="font-size:16px;">CHF '+totalGross.toFixed(2)+'</span></div>';
+    html += '</div>';
+
+    // Payment breakdown
+    html += '<div class="tax-box">';
+    html += '<div class="tax-box-title">Zahlungsmethoden</div>';
+    Object.keys(paymentTotals).forEach(function(pay){
+      html += '<div class="tax-row"><span class="tax-row-label">'+pay+'</span><span class="tax-row-value">CHF '+paymentTotals[pay].toFixed(2)+'</span></div>';
+    });
+    html += '</div>';
+
+    // Orders table
+    html += '<div class="tax-box">';
+    html += '<div class="tax-box-title">Alle Bestellungen ('+totalOrders+')</div>';
+    html += '<table class="orders-table"><thead><tr><th>Nr.</th><th>Datum</th><th>Typ</th><th>Name</th><th>Artikel</th><th>Zahlung</th><th>Total</th></tr></thead><tbody>';
+    filtered.forEach(function(o){
+      var d = new Date(o.savedAt);
+      var dateStr = d.toLocaleDateString('de-CH')+' '+d.toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'});
+      var itemsList = o.items ? o.items.map(function(i){return i.qty+'x '+i.name;}).join(', ') : '';
+      html += '<tr>'+
+        '<td>#'+o.orderNum+'</td>'+
+        '<td>'+dateStr+'</td>'+
+        '<td>'+(o.orderType||'')+'</td>'+
+        '<td>'+(o.name||'')+'</td>'+
+        '<td style="max-width:200px;font-size:11px;">'+itemsList+'</td>'+
+        '<td>'+(o.payMethod||'')+'</td>'+
+        '<td style="font-weight:700;color:var(--orange);">CHF '+(o.total||0).toFixed(2)+'</td>'+
+      '</tr>';
+    });
+    html += '</tbody></table></div>';
+
+    document.getElementById('salesContent').innerHTML = html;
+  })
+  .catch(function(err){
+    document.getElementById('salesContent').innerHTML = '<div style="text-align:center;padding:40px;color:var(--red);">Fehler: Print-Server nicht erreichbar.<br><small>Stellen Sie sicher, dass der Print-Server und ngrok laufen.</small></div>';
+  });
+}
+
+// Set current month on load
+window.addEventListener('load', function(){
+  var now = new Date();
+  document.getElementById('reportMonth') && (document.getElementById('reportMonth').value = now.getMonth());
+  document.getElementById('reportYear') && (document.getElementById('reportYear').value = now.getFullYear());
+});
 
 function showToast(msg,err){
   var t=document.getElementById('toast');
