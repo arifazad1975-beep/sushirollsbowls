@@ -210,7 +210,7 @@
           <div><label style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);font-weight:600;display:block;margin-bottom:6px;">Monat</label>
           <select id="reportMonth" class="form-select" style="width:150px;"><option value="0">Januar</option><option value="1">Februar</option><option value="2">Maerz</option><option value="3">April</option><option value="4">Mai</option><option value="5">Juni</option><option value="6">Juli</option><option value="7">August</option><option value="8">September</option><option value="9">Oktober</option><option value="10">November</option><option value="11">Dezember</option></select></div>
           <div><label style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--orange);font-weight:600;display:block;margin-bottom:6px;">Jahr</label>
-          <select id="reportYear" class="form-select" style="width:100px;"><option value="2026">2026</option><option value="2025">2025</option></select></div>
+          <select id="reportYear" class="form-select" style="width:100px;" id="reportYear"></select></div>
           <div style="margin-top:20px;"><button class="btn-primary" onclick="loadSalesReport()">Laden</button></div>
         </div>
         <div id="salesContent"><div style="text-align:center;padding:40px;color:var(--gray);">Monat auswaehlen und laden</div></div>
@@ -726,8 +726,19 @@ function loadSalesReport(){
 // Set current month on load
 window.addEventListener('load', function(){
   var now = new Date();
+  var now = new Date();
+  var currentYear = now.getFullYear();
+  var yearSel = document.getElementById('reportYear');
+  if(yearSel){
+    yearSel.innerHTML = '';
+    for(var y = currentYear; y >= 2026; y--){
+      var opt = document.createElement('option');
+      opt.value = y; opt.textContent = y;
+      yearSel.appendChild(opt);
+    }
+    yearSel.value = currentYear;
+  }
   document.getElementById('reportMonth') && (document.getElementById('reportMonth').value = now.getMonth());
-  document.getElementById('reportYear') && (document.getElementById('reportYear').value = now.getFullYear());
 });
 
 function showToast(msg,err){
